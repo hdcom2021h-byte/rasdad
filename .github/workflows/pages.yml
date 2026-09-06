@@ -20,6 +20,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Prepare static files
         run: node scripts/prepare-static.mjs
+      - name: Verify static website
+        run: node scripts/verify-static.mjs
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
