@@ -1,0 +1,5579 @@
+<!DOCTYPE html>
+
+<html
+    lang="ar"
+    dir="rtl"
+>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        رصداد | RASDAD - لوحات داشبورد وحلول رقمية ذكية
+    </title>
+
+    <meta
+        name="description"
+        content="رصداد لتصميم لوحات الداشبورد والأنظمة الرقمية المخصصة للمدارس والجمعيات والشركات والمنشآت مع التقارير والتحليلات ومؤشرات الأداء."
+    >
+
+    <meta
+        name="theme-color"
+        content="#0F3D3E"
+    >
+
+    <meta
+        name="robots"
+        content="index, follow"
+    >
+
+    <!-- Open Graph -->
+
+    <meta
+        property="og:title"
+        content="رصداد | RASDAD"
+    >
+
+    <meta
+        property="og:description"
+        content="نرصد البيانات لنصنع القرار. لوحات داشبورد وحلول رقمية ذكية حسب احتياجك."
+    >
+
+    <meta
+        property="og:type"
+        content="website"
+    >
+
+    <meta
+        property="og:locale"
+        content="ar_SA"
+    >
+
+    <!-- Fonts -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Tajawal:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+<link rel="stylesheet" href="media/dashboard-gallery.css">
+<style>
+
+/* =========================================================
+   RASDAD DESIGN SYSTEM
+========================================================= */
+
+:root {
+
+    --rasdad-primary: #0F3D3E;
+    --rasdad-secondary: #0E8B6A;
+    --rasdad-mint: #A7D7C6;
+    --rasdad-lavender: #C8B4F6;
+    --rasdad-cream: #EDE9E3;
+
+    --bg-main: #F8FAF9;
+    --bg-section: #F2F6F4;
+    --bg-card: #FFFFFF;
+
+    --text-heading: #12324A;
+    --text-primary: #344054;
+    --text-secondary: #667085;
+    --text-muted: #98A2B3;
+
+    --border-color: #E4EAE7;
+
+    --success: #16A34A;
+    --warning: #F59E0B;
+    --danger: #DC2626;
+    --info: #2563EB;
+    --pending: #7C3AED;
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
+    --radius-xl: 24px;
+
+    --shadow-card:
+        0 8px 30px
+        rgba(15, 61, 62, 0.08);
+
+    --shadow-large:
+        0 25px 70px
+        rgba(15, 61, 62, 0.13);
+}
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 95px;
+}
+
+body {
+    margin: 0;
+
+    direction: rtl;
+
+    font-family:
+        "Tajawal",
+        Arial,
+        sans-serif;
+
+    color: var(--text-primary);
+
+    background: var(--bg-main);
+
+    overflow-x: hidden;
+}
+
+body.loading {
+    overflow: hidden;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+img,
+svg {
+    display: block;
+
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+}
+
+::selection {
+    color: var(--rasdad-primary);
+
+    background: var(--rasdad-mint);
+}
+
+:focus-visible {
+    outline:
+        3px solid
+        rgba(14, 139, 106, 0.22);
+
+    outline-offset: 3px;
+}
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+.page-loader {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 20000;
+
+    display: grid;
+    place-items: center;
+
+    background: #F8FAF9;
+
+    transition:
+        opacity 0.4s ease,
+        visibility 0.4s ease;
+}
+
+.page-loader.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-content {
+    display: grid;
+    place-items: center;
+
+    gap: 14px;
+
+    color: var(--rasdad-primary);
+}
+
+.loader-mark {
+    width: 58px;
+    height: 58px;
+
+    border-radius: 18px;
+
+    display: grid;
+    place-items: center;
+
+    position: relative;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--rasdad-primary),
+            var(--rasdad-secondary)
+        );
+
+    animation:
+        loaderFloat 1.2s ease-in-out infinite;
+}
+
+.loader-mark::before {
+    content: "";
+
+    width: 26px;
+    height: 26px;
+
+    border:
+        4px solid rgba(255, 255, 255, 0.92);
+
+    border-top-color:
+        var(--rasdad-lavender);
+
+    border-radius: 50%;
+
+    animation:
+        loaderSpin 0.8s linear infinite;
+}
+
+.loader-content strong {
+    font-size: 21px;
+}
+
+.loader-content span {
+    color: var(--text-muted);
+
+    font-size: 12px;
+}
+
+@keyframes loaderSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes loaderFloat {
+    50% {
+        transform: translateY(-4px);
+    }
+}
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+.site-container {
+    width:
+        min(1200px, calc(100% - 32px));
+
+    margin-inline: auto;
+}
+
+.section {
+    padding:
+        100px 0;
+}
+
+.section-alt {
+    background:
+        var(--bg-section);
+}
+
+.section-heading {
+    max-width: 720px;
+
+    margin:
+        0 auto 48px;
+
+    text-align: center;
+}
+
+.section-label {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 7px;
+
+    padding:
+        8px 14px;
+
+    margin-bottom: 14px;
+
+    border-radius: 50px;
+
+    color: var(--rasdad-secondary);
+
+    background:
+        rgba(14, 139, 106, 0.08);
+
+    border:
+        1px solid
+        rgba(14, 139, 106, 0.11);
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.section-heading h2 {
+    margin:
+        0 0 14px;
+
+    color:
+        var(--text-heading);
+
+    font-size:
+        clamp(29px, 4vw, 44px);
+
+    line-height: 1.35;
+}
+
+.section-heading p {
+    margin: 0;
+
+    color:
+        var(--text-secondary);
+
+    font-size: 16px;
+
+    line-height: 2;
+}
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.btn {
+    min-height: 51px;
+
+    padding-inline: 22px;
+
+    border: none;
+
+    border-radius:
+        var(--radius-md);
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease,
+        border-color 0.22s ease,
+        color 0.22s ease;
+}
+
+.btn-primary {
+    color: #FFFFFF;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--rasdad-primary),
+            var(--rasdad-secondary)
+        );
+
+    box-shadow:
+        0 10px 27px
+        rgba(14, 139, 106, 0.18);
+}
+
+.btn-primary:hover {
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 15px 34px
+        rgba(14, 139, 106, 0.24);
+}
+
+.btn-outline {
+    color:
+        var(--rasdad-primary);
+
+    background: #FFFFFF;
+
+    border:
+        1px solid
+        var(--border-color);
+}
+
+.btn-outline:hover {
+    color:
+        var(--rasdad-secondary);
+
+    border-color:
+        var(--rasdad-secondary);
+
+    transform:
+        translateY(-2px);
+}
+
+.btn-full {
+    width: 100%;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    min-height: 820px;
+
+    padding:
+        150px 0 85px;
+
+    display: flex;
+    align-items: center;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 88% 12%,
+            rgba(167, 215, 198, 0.32),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 8% 40%,
+            rgba(200, 180, 246, 0.18),
+            transparent 30%
+        ),
+        linear-gradient(
+            180deg,
+            #FCFEFD,
+            #F8FAF9
+        );
+}
+
+.hero::before {
+    content: "";
+
+    width: 570px;
+    height: 570px;
+
+    border-radius: 50%;
+
+    position: absolute;
+
+    top: -290px;
+    left: -170px;
+
+    border:
+        1px solid
+        rgba(14, 139, 106, 0.08);
+}
+
+.hero::after {
+    content: "";
+
+    width: 260px;
+    height: 260px;
+
+    position: absolute;
+
+    right: -140px;
+    bottom: 20px;
+
+    border-radius: 45px;
+
+    transform: rotate(30deg);
+
+    background:
+        linear-gradient(
+            140deg,
+            rgba(167, 215, 198, 0.12),
+            rgba(200, 180, 246, 0.08)
+        );
+}
+
+.hero-grid {
+    display: grid;
+
+    grid-template-columns:
+        0.92fr 1.08fr;
+
+    align-items: center;
+
+    gap: 68px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+.hero-badge {
+    width: fit-content;
+
+    display: inline-flex;
+    align-items: center;
+
+    gap: 8px;
+
+    margin-bottom: 20px;
+
+    padding:
+        9px 15px;
+
+    border-radius: 50px;
+
+    color:
+        var(--rasdad-secondary);
+
+    background: #FFFFFF;
+
+    border:
+        1px solid
+        var(--border-color);
+
+    box-shadow:
+        var(--shadow-card);
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.hero h1 {
+    margin:
+        0 0 22px;
+
+    color:
+        var(--text-heading);
+
+    font-size:
+        clamp(43px, 6vw, 68px);
+
+    line-height: 1.25;
+
+    letter-spacing: -2px;
+}
+
+.hero h1 span {
+    color:
+        var(--rasdad-secondary);
+}
+
+.hero-description {
+    max-width: 600px;
+
+    margin:
+        0 0 28px;
+
+    color:
+        var(--text-secondary);
+
+    font-size: 18px;
+
+    line-height: 2;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 11px;
+}
+
+.hero-points {
+    margin-top: 28px;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 17px;
+
+    color:
+        var(--text-secondary);
+
+    font-size: 13px;
+}
+
+.hero-points span {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 6px;
+}
+
+.hero-points span::before {
+    content: "✓";
+
+    width: 20px;
+    height: 20px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    color:
+        var(--rasdad-secondary);
+
+    background:
+        rgba(14, 139, 106, 0.09);
+
+    font-weight: 800;
+}
+
+/* =========================================================
+   HERO DASHBOARD
+========================================================= */
+
+.dashboard-device {
+    padding: 12px;
+
+    border-radius: 26px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #173D3E,
+            #072B2C
+        );
+
+    box-shadow:
+        var(--shadow-large);
+
+    transform:
+        perspective(1200px)
+        rotateY(-3deg)
+        rotateX(1deg);
+
+    transition:
+        transform 0.35s ease;
+}
+
+.dashboard-device:hover {
+    transform:
+        perspective(1200px)
+        rotateY(0)
+        rotateX(0)
+        translateY(-5px);
+}
+
+.dashboard-screen {
+    min-height: 520px;
+
+    overflow: hidden;
+
+    display: grid;
+
+    grid-template-columns:
+        115px 1fr;
+
+    border-radius: 18px;
+
+    background:
+        #F7FAF9;
+}
+
+.demo-sidebar {
+    padding:
+        22px 13px;
+
+    color: #FFFFFF;
+
+    background:
+        linear-gradient(
+            180deg,
+            #0F3D3E,
+            #0A3031
+        );
+}
+
+.demo-logo {
+    margin-bottom: 30px;
+
+    text-align: center;
+
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.demo-logo small {
+    display: block;
+
+    margin-top: 5px;
+
+    color:
+        rgba(255, 255, 255, 0.58);
+
+    font-family: "Inter";
+
+    font-size: 6px;
+
+    letter-spacing: 3px;
+}
+
+.demo-menu {
+    display: grid;
+
+    gap: 7px;
+}
+
+.demo-menu span {
+    min-height: 34px;
+
+    padding-inline: 8px;
+
+    display: flex;
+    align-items: center;
+
+    border-radius: 9px;
+
+    color:
+        rgba(255, 255, 255, 0.69);
+
+    background:
+        rgba(255, 255, 255, 0.035);
+
+    font-size: 9px;
+}
+
+.demo-menu span:first-child {
+    color: #FFFFFF;
+
+    background:
+        rgba(167, 215, 198, 0.17);
+}
+
+.demo-main {
+    padding: 18px;
+}
+
+.demo-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 15px;
+}
+
+.demo-welcome strong {
+    display: block;
+
+    color:
+        var(--text-heading);
+
+    font-size: 13px;
+}
+
+.demo-welcome small {
+    display: block;
+
+    margin-top: 4px;
+
+    color:
+        var(--text-muted);
+
+    font-size: 7px;
+}
+
+.demo-search {
+    width: 130px;
+    height: 29px;
+
+    border-radius: 8px;
+
+    border:
+        1px solid #EDF0EE;
+
+    background: #FFFFFF;
+}
+
+.demo-stats {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 8px;
+
+    margin-bottom: 10px;
+}
+
+.demo-stat {
+    padding: 11px;
+
+    border-radius: 11px;
+
+    background: #FFFFFF;
+
+    border:
+        1px solid #EDF1EF;
+}
+
+.demo-stat span {
+    display: block;
+
+    color:
+        var(--text-muted);
+
+    font-size: 7px;
+}
+
+.demo-stat strong {
+    display: block;
+
+    margin-top: 5px;
+
+    color:
+        var(--text-heading);
+
+    font-family:
+        "Inter",
+        "Tajawal";
+
+    font-size: 16px;
+}
+
+.demo-stat em {
+    display: block;
+
+    margin-top: 4px;
+
+    color:
+        var(--success);
+
+    font-size: 6px;
+    font-style: normal;
+}
+
+.demo-chart-grid {
+    display: grid;
+
+    grid-template-columns:
+        1.5fr 0.9fr;
+
+    gap: 9px;
+}
+
+.demo-card {
+    min-height: 176px;
+
+    padding: 11px;
+
+    border-radius: 12px;
+
+    background: #FFFFFF;
+
+    border:
+        1px solid #EDF1EF;
+}
+
+.demo-card-title {
+    color:
+        var(--text-heading);
+
+    font-size: 8px;
+    font-weight: 700;
+}
+
+.line-visual {
+    height: 120px;
+
+    margin-top: 15px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 9px;
+
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            #FFFFFF,
+            #FFFFFF 24px,
+            #F2F4F3 25px
+        );
+}
+
+.line-visual svg {
+    width: 100%;
+    height: 100%;
+}
+
+.bar-visual {
+    height: 120px;
+
+    margin-top: 15px;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    gap: 7px;
+}
+
+.bar-visual span {
+    width: 12px;
+
+    border-radius:
+        5px 5px 2px 2px;
+
+    background:
+        linear-gradient(
+            180deg,
+            var(--rasdad-lavender),
+            var(--rasdad-secondary)
+        );
+}
+
+.bar-visual span:nth-child(1) {
+    height: 42%;
+}
+
+.bar-visual span:nth-child(2) {
+    height: 60%;
+}
+
+.bar-visual span:nth-child(3) {
+    height: 50%;
+}
+
+.bar-visual span:nth-child(4) {
+    height: 82%;
+}
+
+.bar-visual span:nth-child(5) {
+    height: 68%;
+}
+
+.bar-visual span:nth-child(6) {
+    height: 90%;
+}
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.about-grid {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 70px;
+
+    align-items: center;
+}
+
+.about-copy h2 {
+    margin:
+        0 0 17px;
+
+    color:
+        var(--text-heading);
+
+    font-size:
+        clamp(31px, 4vw, 44px);
+}
+
+.about-copy p {
+    margin: 0;
+
+    color:
+        var(--text-secondary);
+
+    font-size: 17px;
+
+    line-height: 2.1;
+}
+
+.about-values {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 14px;
+}
+
+.value-card {
+    padding: 23px;
+
+    border:
+        1px solid
+        var(--border-color);
+
+    border-radius:
+        var(--radius-lg);
+
+    background:
+        var(--bg-card);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.value-card:hover {
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        var(--shadow-card);
+}
+
+.value-icon,
+.service-icon,
+.sector-icon {
+    width: 48px;
+    height: 48px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 14px;
+
+    color:
+        var(--rasdad-primary);
+
+    background:
+        linear-gradient(
+            140deg,
+            rgba(167, 215, 198, 0.27),
+            rgba(200, 180, 246, 0.14)
+        );
+
+    font-size: 21px;
+}
+
+.value-card h3 {
+    margin:
+        13px 0 5px;
+
+    color:
+        var(--text-heading);
+
+    font-size: 16px;
+}
+
+.value-card p {
+    margin: 0;
+
+    color:
+        var(--text-muted);
+
+    font-size: 12px;
+
+    line-height: 1.8;
+}
+
+/* =========================================================
+   SECTORS
+========================================================= */
+
+.sectors-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 17px;
+}
+
+.sector-card {
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 27px;
+
+    border:
+        1px solid
+        var(--border-color);
+
+    border-radius:
+        var(--radius-lg);
+
+    background:
+        var(--bg-card);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.sector-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    right: 0;
+    left: 0;
+
+    height: 4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--rasdad-secondary),
+            var(--rasdad-mint),
+            var(--rasdad-lavender)
+        );
+}
+
+.sector-card:hover {
+    transform:
+        translateY(-7px);
+
+    border-color:
+        var(--rasdad-mint);
+
+    box-shadow:
+        var(--shadow-card);
+}
+
+.sector-card h3 {
+    margin:
+        17px 0 9px;
+
+    color:
+        var(--text-heading);
+
+    font-size: 18px;
+}
+
+.sector-card > p {
+    min-height: 82px;
+
+    margin: 0;
+
+    color:
+        var(--text-secondary);
+
+    font-size: 13px;
+
+    line-height: 1.9;
+}
+
+.tag-list {
+    margin:
+        18px 0 21px;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 6px;
+}
+
+.tag-list span {
+    padding:
+        6px 9px;
+
+    border-radius: 50px;
+
+    color:
+        var(--text-secondary);
+
+    background:
+        #F4F7F6;
+
+    font-size: 10px;
+}
+
+.text-link {
+    color:
+        var(--rasdad-secondary);
+
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+/* =========================================================
+   FEATURES
+========================================================= */
+
+.features-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, minmax(0, 1fr));
+
+    gap: 13px;
+}
+
+.feature-card {
+    padding:
+        22px 16px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        var(--border-color);
+
+    border-radius: 16px;
+
+    background:
+        var(--bg-card);
+
+    transition:
+        transform 0.24s ease,
+        border-color 0.24s ease;
+}
+
+.feature-card:hover {
+    transform:
+        translateY(-5px);
+
+    border-color:
+        var(--rasdad-mint);
+}
+
+.feature-icon {
+    width: 43px;
+    height: 43px;
+
+    margin:
+        0 auto 12px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 13px;
+
+    color:
+        var(--rasdad-primary);
+
+    background:
+        rgba(14, 139, 106, 0.075);
+
+    font-size: 19px;
+}
+
+.feature-card strong {
+    display: block;
+
+    color:
+        var(--text-heading);
+
+    font-size: 13px;
+}
+
+/* =========================================================
+   PORTFOLIO
+========================================================= */
+
+.portfolio-filters {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    flex-wrap: wrap;
+
+    margin-bottom: 30px;
+}
+
+.filter-btn {
+    min-height: 39px;
+
+    padding-inline: 15px;
+
+    border:
+        1px solid
+        var(--border-color);
+
+    border-radius: 50px;
+
+    color:
+        var(--text-secondary);
+
+    background: #FFFFFF;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    color: #FFFFFF;
+
+    background:
+        var(--rasdad-primary);
+
+    border-color:
+        var(--rasdad-primary);
+}
+
+.portfolio-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 20px;
+}
+
+.portfolio-card {
+    overflow: hidden;
+
+    border:
+        1px solid
+        var(--border-color);
+
+    border-radius: 22px;
+
+    background: #FFFFFF;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.portfolio-card.hidden {
+    display: none;
+}
+
+.portfolio-card:hover {
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        var(--shadow-card);
+}
+
+.portfolio-preview {
+    min-height: 265px;
+
+    padding: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(200, 180, 246, 0.20),
+            transparent 30%
+        ),
+        linear-gradient(
+            145deg,
+            #F7FBFA,
+            #EDF6F3
+        );
+}
+
+.portfolio-dashboard {
+    width: 95%;
+    height: 210px;
+
+    overflow: hidden;
+
+    display: grid;
+
+    grid-template-columns:
+        70px 1fr;
+
+    border-radius: 15px;
+
+    background: #FFFFFF;
+
+    box-shadow:
+        0 18px 40px
+        rgba(15, 61, 62, 0.13);
+}
+
+.portfolio-side {
+    padding-top: 14px;
+
+    background:
+        var(--rasdad-primary);
+}
+
+.portfolio-side::before {
+    content: "";
+
+    width: 28px;
+    height: 28px;
+
+    margin-inline: auto;
+
+    display: block;
+
+    border-radius: 9px;
+
+    background:
+        linear-gradient(
+            140deg,
+            var(--rasdad-mint),
+            var(--rasdad-lavender)
+        );
+}
+
+.portfolio-side::after {
+    content: "";
+
+    width: 38px;
+    height: 8px;
+
+    margin:
+        20px auto 0;
+
+    display: block;
+
+    border-radius: 5px;
+
+    background:
+        rgba(255, 255, 255, 0.17);
+
+    box-shadow:
+        0 18px 0
+        rgba(255, 255, 255, 0.08),
+        0 36px 0
+        rgba(255, 255, 255, 0.08),
+        0 54px 0
+        rgba(255, 255, 255, 0.08);
+}
+
+.portfolio-main {
+    padding: 15px;
+}
+
+.portfolio-mini-stats {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 7px;
+}
+
+.portfolio-mini-stats span {
+    height: 39px;
+
+    border:
+        1px solid #EDF1EF;
+
+    border-radius: 8px;
+
+    background: #FFFFFF;
+}
+
+.portfolio-chart {
+    height: 103px;
+
+    margin-top: 10px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border:
+        1px solid #EDF1EF;
+
+    border-radius: 9px;
+
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            #FFFFFF,
+            #FFFFFF 23px,
+            #F2F4F3 24px
+        );
+}
+
+.portfolio-chart::after {
+    content: "";
+
+    width: 75%;
+    height: 50%;
+
+    position: absolute;
+
+    right: 12%;
+    bottom: 22%;
+
+    border-top:
+        3px solid
+        var(--rasdad-secondary);
+
+    border-radius: 50%;
+
+    transform:
+        rotate(-8deg);
+}
+
+.portfolio-content {
+    padding: 23px;
+}
+
+.portfolio-category {
+    display: inline-flex;
+
+    color:
+        var(--rasdad-secondary);
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.portfolio-content h3 {
+    margin:
+        7px 0;
+
+    color:
+        var(--text-heading);
+
+    font-size: 20px;
+}
+
+.portfolio-content p {
+    margin: 0;
+
+    color:
+        var(--text-secondary);
+
+    font-size: 13px;
+
+    line-height: 1.9;
+}
+
+.portfolio-tags {
+    margin-top: 17px;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 6px;
+}
+
+.portfolio-tags span {
+    padding:
+        6px 9px;
+
+    border-radius: 50px;
+
+    color:
+        var(--text-muted);
+
+    background:
+        #F5F7F6;
+
+    font-size: 10px;
+}
+
+/* =========================================================
+   PROCESS
+========================================================= */
+
+.process-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(6, 1fr);
+
+    gap: 10px;
+}
+
+.process-card {
+    padding:
+        22px 16px;
+
+    border:
+        1px solid
+        var(--border-color);
+
+    border-radius: 17px;
+
+    background: #FFFFFF;
+
+    position: relative;
+}
+
+.process-number {
+    width: 36px;
+    height: 36px;
+
+    display: grid;
+    place-items: center;
+
+    margin-bottom: 14px;
+
+    border-radius: 11px;
+
+    color: #FFFFFF;
+
+    background:
+        var(--rasdad-primary);
+
+    font-family:
+        "Inter";
+
+    font-weight: 700;
+}
+
+.process-card h3 {
+    margin:
+        0 0 7px;
+
+    color:
+        var(--text-heading);
+
+    font-size: 14px;
+}
+
+.process-card p {
+    margin: 0;
+
+    color:
+        var(--text-muted);
+
+    font-size: 11px;
+
+    line-height: 1.8;
+}
+
+/* =========================================================
+   DASHBOARD FEATURES SHOWCASE
+========================================================= */
+
+.dashboard-showcase {
+    display: grid;
+
+    grid-template-columns:
+        0.85fr 1.3fr 0.85fr;
+
+    align-items: center;
+
+    gap: 28px;
+}
+
+.showcase-list {
+    display: grid;
+
+    gap: 13px;
+}
+
+.showcase-item {
+    padding: 16px;
+
+    border:
+        1px solid
+        var(--border-color);
+
+    border-radius: 15px;
+
+    background: #FFFFFF;
+
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+}
+
+.showcase-item-icon {
+    width: 38px;
+    height: 38px;
+
+    flex: 0 0 38px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 11px;
+
+    color:
+        var(--rasdad-secondary);
+
+    background:
+        rgba(14, 139, 106, 0.08);
+}
+
+.showcase-item strong {
+    display: block;
+
+    color:
+        var(--text-heading);
+
+    font-size: 13px;
+}
+
+.showcase-item span {
+    display: block;
+
+    margin-top: 3px;
+
+    color:
+        var(--text-muted);
+
+    font-size: 10px;
+}
+
+.showcase-dashboard {
+    padding: 12px;
+
+    border-radius: 24px;
+
+    background:
+        #0F3D3E;
+
+    box-shadow:
+        var(--shadow-large);
+}
+
+/* =========================================================
+   SERVICES
+========================================================= */
+
+.services-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 14px;
+}
+
+.service-card {
+    padding: 25px;
+
+    border:
+        1px solid
+        var(--border-color);
+
+    border-radius: 18px;
+
+    background: #FFFFFF;
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.service-card:hover {
+    transform:
+        translateY(-5px);
+
+    border-color:
+        var(--rasdad-mint);
+}
+
+.service-card h3 {
+    margin:
+        15px 0 7px;
+
+    color:
+        var(--text-heading);
+
+    font-size: 15px;
+}
+
+.service-card p {
+    margin: 0;
+
+    color:
+        var(--text-muted);
+
+    font-size: 12px;
+
+    line-height: 1.8;
+}
+
+/* =========================================================
+   PRICING
+========================================================= */
+
+.pricing-grid {
+    max-width: 980px;
+
+    margin-inline: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.price-card {
+    padding: 30px;
+
+    position: relative;
+
+    border:
+        1px solid
+        var(--border-color);
+
+    border-radius: 23px;
+
+    background: #FFFFFF;
+}
+
+.price-card.featured {
+    border-color:
+        var(--rasdad-secondary);
+
+    box-shadow:
+        0 20px 50px
+        rgba(14, 139, 106, 0.12);
+}
+
+.price-popular {
+    position: absolute;
+
+    top: 16px;
+    left: 16px;
+
+    padding:
+        6px 9px;
+
+    border-radius: 50px;
+
+    color: #FFFFFF;
+
+    background:
+        var(--rasdad-secondary);
+
+    font-size: 9px;
+    font-weight: 700;
+}
+
+.price-label {
+    display: inline-flex;
+
+    padding:
+        7px 11px;
+
+    border-radius: 50px;
+
+    color:
+        var(--rasdad-secondary);
+
+    background:
+        rgba(14, 139, 106, 0.08);
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.price-card h3 {
+    margin:
+        16px 0 7px;
+
+    color:
+        var(--text-heading);
+
+    font-size: 23px;
+}
+
+.price-card > p {
+    min-height: 74px;
+
+    margin: 0;
+
+    color:
+        var(--text-secondary);
+
+    font-size: 13px;
+
+    line-height: 1.9;
+}
+
+.price-amount {
+    display: block;
+    padding: 12px;
+    border-radius: 12px;
+    color: var(--rasdad-primary);
+    background: rgba(14, 139, 106, 0.08);
+    font-size: 24px;
+    font-weight: 800;
+    text-align: center;
+}
+
+.price-features {
+    margin:
+        23px 0;
+
+    padding: 0;
+
+    list-style: none;
+
+    display: grid;
+
+    gap: 12px;
+}
+
+.price-features li {
+    color:
+        var(--text-primary);
+
+    font-size: 13px;
+}
+
+.price-features li::before {
+    content: "✓";
+
+    margin-left: 7px;
+
+    color:
+        var(--success);
+
+    font-weight: 800;
+}
+
+.price-note {
+    max-width: 740px;
+
+    margin:
+        25px auto 0;
+
+    text-align: center;
+
+    color:
+        var(--text-muted);
+
+    font-size: 12px;
+
+    line-height: 1.9;
+}
+
+/* =========================================================
+   PROJECT REQUEST
+========================================================= */
+
+.request-shell {
+    padding: 56px;
+
+    display: grid;
+
+    grid-template-columns:
+        0.8fr 1.2fr;
+
+    gap: 55px;
+
+    border-radius: 30px;
+
+    color: #FFFFFF;
+
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(200, 180, 246, 0.13),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            var(--rasdad-primary),
+            #075455
+        );
+}
+
+.request-copy h2 {
+    margin:
+        0 0 15px;
+
+    font-size:
+        clamp(31px, 4vw, 42px);
+
+    line-height: 1.4;
+}
+
+.request-copy > p {
+    margin: 0;
+
+    color:
+        rgba(255, 255, 255, 0.72);
+
+    line-height: 2;
+}
+
+.request-benefits {
+    margin-top: 28px;
+
+    display: grid;
+
+    gap: 12px;
+}
+
+.request-benefits span {
+    color:
+        rgba(255, 255, 255, 0.82);
+
+    font-size: 13px;
+}
+
+.request-benefits span::before {
+    content: "✓";
+
+    margin-left: 7px;
+
+    color:
+        var(--rasdad-mint);
+}
+
+.request-form {
+    padding: 28px;
+
+    border-radius: 22px;
+
+    color:
+        var(--text-primary);
+
+    background: #FFFFFF;
+}
+
+.form-grid {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 13px;
+}
+
+.form-field {
+    display: grid;
+
+    gap: 7px;
+}
+
+.form-field.full {
+    grid-column:
+        1 / -1;
+}
+
+.form-field label {
+    color:
+        var(--text-heading);
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.form-control {
+    width: 100%;
+    min-height: 46px;
+
+    padding:
+        0 13px;
+
+    border:
+        1px solid
+        var(--border-color);
+
+    border-radius: 10px;
+
+    outline: none;
+
+    color:
+        var(--text-primary);
+
+    background:
+        #FCFDFC;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+textarea.form-control {
+    min-height: 115px;
+
+    padding-top: 12px;
+
+    resize: vertical;
+}
+
+.form-control:focus {
+    border-color:
+        var(--rasdad-secondary);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(14, 139, 106, 0.08);
+}
+
+.form-actions {
+    margin-top: 14px;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 9px;
+}
+
+.form-status {
+    display: none;
+
+    margin-top: 12px;
+
+    padding:
+        10px 12px;
+
+    border-radius: 9px;
+
+    font-size: 12px;
+
+    line-height: 1.8;
+}
+
+.form-status.show {
+    display: block;
+}
+
+.form-status.success {
+    color: #067647;
+
+    background:
+        #ECFDF3;
+}
+
+.form-status.error {
+    color: #B42318;
+
+    background:
+        #FEF3F2;
+}
+
+/* =========================================================
+   FAQ
+========================================================= */
+
+.faq-list {
+    max-width: 860px;
+
+    margin-inline: auto;
+
+    display: grid;
+
+    gap: 10px;
+}
+
+.faq-item {
+    overflow: hidden;
+
+    border:
+        1px solid
+        var(--border-color);
+
+    border-radius: 16px;
+
+    background: #FFFFFF;
+}
+
+.faq-question {
+    width: 100%;
+    min-height: 68px;
+
+    padding:
+        0 21px;
+
+    border: none;
+
+    background: #FFFFFF;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    color:
+        var(--text-heading);
+
+    text-align: right;
+
+    font-weight: 700;
+}
+
+.faq-symbol {
+    color:
+        var(--rasdad-secondary);
+
+    font-size: 23px;
+
+    transition:
+        transform 0.25s ease;
+}
+
+.faq-answer {
+    max-height: 0;
+
+    overflow: hidden;
+
+    transition:
+        max-height 0.3s ease;
+}
+
+.faq-answer p {
+    margin: 0;
+
+    padding:
+        0 21px 20px;
+
+    color:
+        var(--text-secondary);
+
+    font-size: 14px;
+
+    line-height: 1.9;
+}
+
+.faq-item.open .faq-answer {
+    max-height: 200px;
+}
+
+.faq-item.open .faq-symbol {
+    transform:
+        rotate(45deg);
+}
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact-grid {
+    display: grid;
+
+    grid-template-columns:
+        0.8fr 1.2fr;
+
+    gap: 28px;
+
+    align-items: start;
+}
+
+.contact-cards {
+    display: grid;
+
+    gap: 13px;
+}
+
+.contact-card {
+    padding: 23px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    border:
+        1px solid
+        var(--border-color);
+
+    border-radius: 17px;
+
+    background: #FFFFFF;
+}
+
+.contact-icon {
+    width: 47px;
+    height: 47px;
+
+    flex: 0 0 47px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 14px;
+
+    color:
+        var(--rasdad-secondary);
+
+    background:
+        rgba(14, 139, 106, 0.08);
+
+    font-size: 20px;
+}
+
+.contact-card h3 {
+    margin:
+        0 0 4px;
+
+    color:
+        var(--text-heading);
+
+    font-size: 14px;
+}
+
+.contact-card p {
+    margin: 0;
+
+    color:
+        var(--text-muted);
+
+    font-size: 12px;
+}
+
+.contact-form-card {
+    padding: 28px;
+
+    border:
+        1px solid
+        var(--border-color);
+
+    border-radius: 22px;
+
+    background: #FFFFFF;
+
+    box-shadow:
+        var(--shadow-card);
+}
+
+/* =========================================================
+   WHATSAPP
+========================================================= */
+
+.whatsapp-floating {
+    min-height: 54px;
+
+    padding:
+        0 18px;
+
+    position: fixed;
+
+    right: 22px;
+    bottom: 23px;
+
+    z-index: 965;
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    border-radius: 50px;
+
+    color: #FFFFFF;
+
+    background:
+        #16A34A;
+
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    box-shadow:
+        0 12px 30px
+        rgba(22, 163, 74, 0.26);
+
+    transition:
+        transform 0.22s ease;
+}
+
+.whatsapp-floating:hover {
+    transform:
+        translateY(-3px);
+}
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.reveal {
+    opacity: 0;
+
+    transform:
+        translateY(24px);
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1080px) {
+
+    .hero-grid,
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-content {
+        text-align: center;
+    }
+
+    .hero-badge {
+        margin-inline: auto;
+    }
+
+    .hero-description {
+        margin-inline: auto;
+    }
+
+    .hero-actions,
+    .hero-points {
+        justify-content: center;
+    }
+
+    .dashboard-device {
+        max-width: 760px;
+
+        margin-inline: auto;
+
+        transform: none;
+    }
+
+    .sectors-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .features-grid {
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+
+    .process-grid {
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+
+    .dashboard-showcase {
+        grid-template-columns:
+            1fr;
+    }
+
+    .showcase-list {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .services-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .request-shell {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 800px) {
+
+    .section {
+        padding:
+            75px 0;
+    }
+
+    .hero {
+        min-height: auto;
+
+        padding:
+            125px 0 75px;
+    }
+
+    .hero h1 {
+        letter-spacing: -1px;
+    }
+
+    .dashboard-screen {
+        min-height: 440px;
+
+        grid-template-columns:
+            78px 1fr;
+    }
+
+    .demo-stats {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pricing-grid {
+        grid-template-columns: 1fr;
+
+        max-width: 580px;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-field.full {
+        grid-column: auto;
+    }
+}
+
+@media (max-width: 580px) {
+
+    .site-container {
+        width:
+            min(100% - 22px, 1200px);
+    }
+
+    .hero h1 {
+        font-size: 39px;
+    }
+
+    .hero-description {
+        font-size: 15px;
+    }
+
+    .hero-actions .btn {
+        width: 100%;
+    }
+
+    .dashboard-device {
+        padding: 7px;
+    }
+
+    .dashboard-screen {
+        grid-template-columns:
+            56px 1fr;
+    }
+
+    .demo-sidebar {
+        padding:
+            13px 5px;
+    }
+
+    .demo-logo {
+        font-size: 10px;
+    }
+
+    .demo-logo small {
+        display: none;
+    }
+
+    .demo-menu span {
+        font-size: 0;
+
+        justify-content: center;
+    }
+
+    .demo-menu span::before {
+        content: "•";
+
+        font-size: 16px;
+    }
+
+    .demo-main {
+        padding: 10px;
+    }
+
+    .demo-search {
+        width: 70px;
+    }
+
+    .demo-stat strong {
+        font-size: 12px;
+    }
+
+    .demo-chart-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .demo-card:last-child {
+        display: none;
+    }
+
+    .about-values,
+    .sectors-grid,
+    .features-grid,
+    .process-grid,
+    .showcase-list,
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .request-shell {
+        padding:
+            32px 19px;
+
+        border-radius: 22px;
+    }
+
+    .request-form,
+    .contact-form-card {
+        padding: 20px;
+    }
+
+    .whatsapp-floating {
+        width: 53px;
+
+        padding: 0;
+
+        justify-content: center;
+    }
+
+    .whatsapp-floating span {
+        display: none;
+    }
+}
+
+@media (
+    prefers-reduced-motion: reduce
+) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior:
+            auto !important;
+
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            0.01ms !important;
+    }
+}
+
+</style>
+
+</head>
+
+<body class="loading">
+
+<!-- =======================================================
+     LOADER
+======================================================= -->
+
+<div
+    class="page-loader"
+    id="pageLoader"
+>
+    <div class="loader-content">
+
+        <div class="loader-mark"></div>
+
+        <strong>رصداد</strong>
+
+        <span>
+            نجهز تجربتك الرقمية...
+        </span>
+
+    </div>
+</div>
+
+<!-- Header Loaded Here -->
+
+<div id="header-placeholder"></div>
+
+<main>
+
+<!-- =======================================================
+     HERO
+======================================================= -->
+
+<section
+    id="home"
+    class="hero"
+>
+
+<div class="site-container hero-grid">
+
+    <div class="hero-content reveal">
+
+        <div class="hero-badge">
+            ✦ حلول رقمية ذكية حسب احتياجك
+        </div>
+
+        <h1>
+            حوّل بياناتك إلى
+            <span>
+                قرارات أوضح
+            </span>
+        </h1>
+
+        <p class="hero-description">
+            نصمم لوحات متابعة وأنظمة رقمية
+            تساعدك على تنظيم أعمالك،
+            متابعة الأداء، تحليل البيانات
+            واستخراج التقارير بسهولة.
+        </p>
+
+        <div class="hero-actions">
+
+            <a
+                href="#portfolio"
+                class="btn btn-primary"
+            >
+                استعرض أعمالنا
+            </a>
+
+            <a
+                href="#project-request"
+                class="btn btn-outline"
+            >
+                اطلب مشروعك
+            </a>
+
+        </div>
+
+        <div class="hero-points">
+
+            <span>
+                متجاوب مع جميع الأجهزة
+            </span>
+
+            <span>
+                تقارير وإحصائيات
+            </span>
+
+            <span>
+                حلول حسب الطلب
+            </span>
+
+        </div>
+
+    </div>
+
+    <!-- Dashboard Mockup -->
+
+    <div class="dashboard-device reveal">
+
+        <div class="dashboard-screen">
+
+            <aside class="demo-sidebar">
+
+                <div class="demo-logo">
+                    رصداد
+                    <small>RASDAD</small>
+                </div>
+
+                <div class="demo-menu">
+
+                    <span>
+                        الرئيسية
+                    </span>
+
+                    <span>
+                        التحليلات
+                    </span>
+
+                    <span>
+                        التقارير
+                    </span>
+
+                    <span>
+                        السجلات
+                    </span>
+
+                    <span>
+                        الإعدادات
+                    </span>
+
+                </div>
+
+            </aside>
+
+            <div class="demo-main">
+
+                <div class="demo-topbar">
+
+                    <div class="demo-welcome">
+                        <strong>
+                            مرحبًا بك 👋
+                        </strong>
+
+                        <small>
+                            نظرة شاملة على أعمالك
+                        </small>
+                    </div>
+
+                    <div class="demo-search"></div>
+
+                </div>
+
+                <div class="demo-stats">
+
+                    <div class="demo-stat">
+                        <span>
+                            إجمالي السجلات
+                        </span>
+
+                        <strong>
+                            1,248
+                        </strong>
+
+                        <em>
+                            +12%
+                        </em>
+                    </div>
+
+                    <div class="demo-stat">
+                        <span>
+                            معدل الإنجاز
+                        </span>
+
+                        <strong>
+                            88%
+                        </strong>
+
+                        <em>
+                            +8%
+                        </em>
+                    </div>
+
+                    <div class="demo-stat">
+                        <span>
+                            هذا الشهر
+                        </span>
+
+                        <strong>
+                            328
+                        </strong>
+
+                        <em>
+                            +17%
+                        </em>
+                    </div>
+
+                    <div class="demo-stat">
+                        <span>
+                            المهام
+                        </span>
+
+                        <strong>
+                            56
+                        </strong>
+
+                        <em>
+                            +9%
+                        </em>
+                    </div>
+
+                </div>
+
+                <div class="demo-chart-grid">
+
+                    <div class="demo-card">
+
+                        <div class="demo-card-title">
+                            تطور الأداء
+                        </div>
+
+                        <div class="line-visual">
+
+                            <svg
+                                viewBox="0 0 400 120"
+                                preserveAspectRatio="none"
+                                aria-hidden="true"
+                            >
+                                <defs>
+
+                                    <linearGradient
+                                        id="rasdadArea"
+                                        x1="0"
+                                        y1="0"
+                                        x2="0"
+                                        y2="1"
+                                    >
+                                        <stop
+                                            offset="0%"
+                                            stop-color="#0E8B6A"
+                                            stop-opacity=".22"
+                                        />
+
+                                        <stop
+                                            offset="100%"
+                                            stop-color="#0E8B6A"
+                                            stop-opacity="0"
+                                        />
+
+                                    </linearGradient>
+
+                                </defs>
+
+                                <path
+                                    d="
+                                    M0,96
+                                    C45,84 45,62 80,68
+                                    C115,74 128,36 160,47
+                                    C200,61 215,30 250,38
+                                    C295,49 315,18 400,24
+                                    L400,120
+                                    L0,120 Z
+                                    "
+                                    fill="url(#rasdadArea)"
+                                />
+
+                                <path
+                                    d="
+                                    M0,96
+                                    C45,84 45,62 80,68
+                                    C115,74 128,36 160,47
+                                    C200,61 215,30 250,38
+                                    C295,49 315,18 400,24
+                                    "
+                                    fill="none"
+                                    stroke="#0E8B6A"
+                                    stroke-width="3"
+                                />
+
+                            </svg>
+
+                        </div>
+
+                    </div>
+
+                    <div class="demo-card">
+
+                        <div class="demo-card-title">
+                            مؤشرات الأداء
+                        </div>
+
+                        <div class="bar-visual">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- =======================================================
+     ABOUT
+======================================================= -->
+
+<section
+    id="solutions"
+    class="section"
+>
+
+<div class="site-container about-grid">
+
+    <div class="about-copy reveal">
+
+        <span class="section-label">
+            عن رصداد
+        </span>
+
+        <h2>
+            ما هي رصداد؟
+        </h2>
+
+        <p>
+            رصداد منصة للحلول الرقمية ولوحات
+            المتابعة الذكية تساعد الجهات على تنظيم
+            بياناتها وتحويلها إلى معلومات واضحة
+            ومؤشرات تساعد في اتخاذ القرار.
+        </p>
+
+    </div>
+
+    <div class="about-values">
+
+        <article class="value-card reveal">
+
+            <div class="value-icon">
+                ◉
+            </div>
+
+            <h3>
+                رصد
+            </h3>
+
+            <p>
+                متابعة البيانات والعمليات
+                في مكان واحد.
+            </p>
+
+        </article>
+
+        <article class="value-card reveal">
+
+            <div class="value-icon">
+                ◫
+            </div>
+
+            <h3>
+                تحليل
+            </h3>
+
+            <p>
+                تحويل الأرقام إلى
+                مؤشرات مفهومة.
+            </p>
+
+        </article>
+
+        <article class="value-card reveal">
+
+            <div class="value-icon">
+                ✓
+            </div>
+
+            <h3>
+                قرار
+            </h3>
+
+            <p>
+                معلومات أوضح لاتخاذ
+                قرارات أفضل.
+            </p>
+
+        </article>
+
+        <article class="value-card reveal">
+
+            <div class="value-icon">
+                ↗
+            </div>
+
+            <h3>
+                تطوير
+            </h3>
+
+            <p>
+                تحسين مستمر للأداء
+                والعمليات.
+            </p>
+
+        </article>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- =======================================================
+     SECTORS
+======================================================= -->
+
+<section
+    id="sectors"
+    class="section section-alt"
+>
+
+<div class="site-container">
+
+    <div class="section-heading reveal">
+
+        <span class="section-label">
+            القطاعات
+        </span>
+
+        <h2>
+            حلول تناسب مختلف القطاعات
+        </h2>
+
+        <p>
+            نبني كل لوحة حسب طبيعة الجهة
+            وبياناتها واحتياجاتها الفعلية.
+        </p>
+
+    </div>
+
+    <div class="sectors-grid">
+
+        <article class="sector-card reveal">
+
+            <div class="sector-icon">
+                🎓
+            </div>
+
+            <h3>
+                المدارس
+            </h3>
+
+            <p>
+                حلول رقمية تساعد الإدارات
+                التعليمية والمدارس على المتابعة
+                والتنظيم وإعداد التقارير.
+            </p>
+
+            <div class="tag-list">
+                <span>الغياب</span>
+                <span>التأخير</span>
+                <span>الاستئذان</span>
+                <span>الخطط</span>
+                <span>الأداء</span>
+                <span>التقارير</span>
+            </div>
+
+            <a
+                href="#project-request"
+                class="text-link"
+            >
+                عرض الحلول ←
+            </a>
+
+        </article>
+
+        <article class="sector-card reveal">
+
+            <div class="sector-icon">
+                ♡
+            </div>
+
+            <h3>
+                الجمعيات
+            </h3>
+
+            <p>
+                لوحات لمتابعة البرامج
+                والمستفيدين والمبادرات
+                والتطوع وقياس الأثر.
+            </p>
+
+            <div class="tag-list">
+                <span>المستفيدون</span>
+                <span>المبادرات</span>
+                <span>المتطوعون</span>
+                <span>المؤشرات</span>
+                <span>قياس الأثر</span>
+                <span>التقارير</span>
+            </div>
+
+            <a
+                href="#project-request"
+                class="text-link"
+            >
+                عرض الحلول ←
+            </a>
+
+        </article>
+
+        <article class="sector-card reveal">
+
+            <div class="sector-icon">
+                ▦
+            </div>
+
+            <h3>
+                المنشآت والشركات
+            </h3>
+
+            <p>
+                حلول مرنة لتنظيم العمليات
+                والموظفين والمبيعات
+                ومتابعة مستوى الأداء.
+            </p>
+
+            <div class="tag-list">
+                <span>الموظفون</span>
+                <span>المهام</span>
+                <span>المبيعات</span>
+                <span>المصروفات</span>
+                <span>الأداء</span>
+                <span>التقارير</span>
+            </div>
+
+            <a
+                href="#project-request"
+                class="text-link"
+            >
+                عرض الحلول ←
+            </a>
+
+        </article>
+
+        <article class="sector-card reveal">
+
+            <div class="sector-icon">
+                ⚙
+            </div>
+
+            <h3>
+                حلول مخصصة
+            </h3>
+
+            <p>
+                نصمم لك النظام حسب
+                طبيعة عملك واحتياجك
+                دون التقيد بقالب ثابت.
+            </p>
+
+            <div class="tag-list">
+                <span>Dashboard</span>
+                <span>Excel</span>
+                <span>WhatsApp</span>
+                <span>PDF</span>
+                <span>Forms</span>
+                <span>Permissions</span>
+            </div>
+
+            <a
+                href="#project-request"
+                class="text-link"
+            >
+                اطلب حلك ←
+            </a>
+
+        </article>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- =======================================================
+     WHY RASDAD
+======================================================= -->
+
+<section class="section">
+
+<div class="site-container">
+
+    <div class="section-heading reveal">
+
+        <span class="section-label">
+            المميزات
+        </span>
+
+        <h2>
+            لماذا تختار رصداد؟
+        </h2>
+
+        <p>
+            نهتم بأن تكون اللوحة جميلة،
+            واضحة وعملية في الوقت نفسه.
+        </p>
+
+    </div>
+
+    <div class="features-grid">
+
+        <div class="feature-card reveal">
+            <div class="feature-icon">◈</div>
+            <strong>سهولة الاستخدام</strong>
+        </div>
+
+        <div class="feature-card reveal">
+            <div class="feature-icon">▤</div>
+            <strong>تقارير واضحة</strong>
+        </div>
+
+        <div class="feature-card reveal">
+            <div class="feature-icon">▣</div>
+            <strong>تصميم متجاوب</strong>
+        </div>
+
+        <div class="feature-card reveal">
+            <div class="feature-icon">⚙</div>
+            <strong>أنظمة حسب الطلب</strong>
+        </div>
+
+        <div class="feature-card reveal">
+            <div class="feature-icon">◫</div>
+            <strong>تحليلات وإحصائيات</strong>
+        </div>
+
+        <div class="feature-card reveal">
+            <div class="feature-icon">↗</div>
+            <strong>قابلية التطوير</strong>
+        </div>
+
+        <div class="feature-card reveal">
+            <div class="feature-icon">PDF</div>
+            <strong>طباعة وتقارير PDF</strong>
+        </div>
+
+        <div class="feature-card reveal">
+            <div class="feature-icon">X</div>
+            <strong>دعم استيراد Excel</strong>
+        </div>
+
+        <div class="feature-card reveal">
+            <div class="feature-icon">⇄</div>
+            <strong>تكاملات مستقبلية</strong>
+        </div>
+
+        <div class="feature-card reveal">
+            <div class="feature-icon">⌾</div>
+            <strong>تنظيم وأمان البيانات</strong>
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- =======================================================
+     PORTFOLIO
+======================================================= -->
+
+<section
+    id="portfolio"
+    class="section section-alt"
+>
+
+<div class="site-container">
+
+    <div class="section-heading reveal">
+
+        <span class="section-label">
+            أعمالنا
+        </span>
+
+        <h2>
+            نماذج من أعمالنا
+        </h2>
+
+        <p>
+            مجموعة من نماذج الداشبوردات
+            والحلول التي يمكن تطويرها
+            حسب احتياج كل جهة.
+        </p>
+
+    </div>
+
+    <div class="dashboard-gallery" aria-label="صور عرض داشبوردات رصداد">
+        <a href="media/p1.png" target="_blank" rel="noopener" aria-label="عرض صورة الداشبورد على الأجهزة بحجم كامل">
+            <img src="media/p1.png" alt="عرض داشبورد رصداد على الكمبيوتر والجوال والجهاز اللوحي" loading="lazy" decoding="async">
+        </a>
+        <a href="media/p2.png" target="_blank" rel="noopener" aria-label="عرض صورة مؤشرات وتقارير رصداد بحجم كامل">
+            <img src="media/p2.png" alt="عرض لوحات رصداد للإحصائيات والتقارير واستيراد Excel" loading="lazy" decoding="async">
+        </a>
+    </div>
+
+    <div
+        class="portfolio-filters"
+        role="group"
+        aria-label="تصفية المشاريع"
+    >
+
+        <button
+            class="filter-btn active"
+            data-filter="all"
+        >
+            الكل
+        </button>
+
+        <button
+            class="filter-btn"
+            data-filter="schools"
+        >
+            المدارس
+        </button>
+
+        <button
+            class="filter-btn"
+            data-filter="charities"
+        >
+            الجمعيات
+        </button>
+
+        <button
+            class="filter-btn"
+            data-filter="companies"
+        >
+            الشركات
+        </button>
+
+        <button
+            class="filter-btn"
+            data-filter="custom"
+        >
+            أنظمة مخصصة
+        </button>
+
+    </div>
+
+    <div class="portfolio-grid">
+
+        <article class="portfolio-card reveal" data-category="schools">
+            <a class="work-screenshot" href="media/dash1.png" target="_blank" rel="noopener"><img src="media/dash1.png" alt="لوحة استئذان الطالبات" loading="lazy" decoding="async"></a>
+            <div class="portfolio-content"><span class="portfolio-category">المدارس</span><h3>لوحة استئذان الطالبات</h3><p>تسجيل طلبات الاستئذان ومتابعة حالاتها وتوزيعها حسب النوع.</p></div>
+        </article>
+        <article class="portfolio-card reveal" data-category="schools">
+            <a class="work-screenshot" href="media/dash2.png" target="_blank" rel="noopener"><img src="media/dash2.png" alt="إدارة اللجان المدرسية" loading="lazy" decoding="async"></a>
+            <div class="portfolio-content"><span class="portfolio-category">المدارس</span><h3>إدارة اللجان المدرسية</h3><p>متابعة اللجان والأعضاء والاجتماعات والتنبيهات في لوحة واحدة.</p></div>
+        </article>
+        <article class="portfolio-card reveal" data-category="schools">
+            <a class="work-screenshot" href="media/dash3.png" target="_blank" rel="noopener"><img src="media/dash3.png" alt="المذكرة الذكية" loading="lazy" decoding="async"></a>
+            <div class="portfolio-content"><span class="portfolio-category">المدارس</span><h3>المذكرة الذكية</h3><p>تنظيم الطالبات والحضور والجداول والمهام والخطط اليومية.</p></div>
+        </article>
+        <article class="portfolio-card reveal" data-category="schools">
+            <a class="work-screenshot" href="media/dash4.png" target="_blank" rel="noopener"><img src="media/dash4.png" alt="ملف الإشراف والمناوبة" loading="lazy" decoding="async"></a>
+            <div class="portfolio-content"><span class="portfolio-category">المدارس</span><h3>ملف الإشراف والمناوبة</h3><p>جدولة مهام الإشراف والمناوبة ومتابعة الملاحظات والتقارير.</p></div>
+        </article>
+        <article class="portfolio-card reveal" data-category="custom">
+            <a class="work-screenshot" href="media/dash5.png" target="_blank" rel="noopener"><img src="media/dash5.png" alt="الدفتر الذكي لإدارة المهام" loading="lazy" decoding="async"></a>
+            <div class="portfolio-content"><span class="portfolio-category">نظام مخصص</span><h3>الدفتر الذكي</h3><p>تنظيم المهام والأولويات والتنبيهات ومتابعة نسب الإنجاز.</p></div>
+        </article>
+        <article class="portfolio-card reveal" data-category="custom">
+            <a class="work-screenshot" href="media/dash6.png" target="_blank" rel="noopener"><img src="media/dash6.png" alt="بوابة المراسلات الرسمية" loading="lazy" decoding="async"></a>
+            <div class="portfolio-content"><span class="portfolio-category">نظام مخصص</span><h3>بوابة المراسلات الرسمية</h3><p>إدارة الصادر والوارد ومتابعة المعاملات والأرشيف.</p></div>
+        </article>
+        <article class="portfolio-card reveal" data-category="schools">
+            <a class="work-screenshot" href="media/dash7.png" target="_blank" rel="noopener"><img src="media/dash7.png" alt="لوحة الأداء والإنجاز الوظيفي" loading="lazy" decoding="async"></a>
+            <div class="portfolio-content"><span class="portfolio-category">المدارس</span><h3>لوحة الأداء والإنجاز الوظيفي</h3><p>متابعة الأهداف والجدارات والمبادرات والدورات ونسب الإنجاز.</p></div>
+        </article>
+        <article class="portfolio-card reveal" data-category="schools">
+            <a class="work-screenshot" href="media/dash8.png" target="_blank" rel="noopener"><img src="media/dash8.png" alt="لوحة الأعمال المدرسية التشغيلية" loading="lazy" decoding="async"></a>
+            <div class="portfolio-content"><span class="portfolio-category">المدارس</span><h3>لوحة الأعمال المدرسية التشغيلية</h3><p>تنظيم مجالات العمل المدرسي ومتابعة الإنجاز والشواهد.</p></div>
+        </article>
+        <article class="portfolio-card reveal" data-category="schools">
+            <a class="work-screenshot" href="media/dash9.png" target="_blank" rel="noopener"><img src="media/dash9.png" alt="لوحة التحكم المدرسية الشاملة" loading="lazy" decoding="async"></a>
+            <div class="portfolio-content"><span class="portfolio-category">المدارس</span><h3>لوحة التحكم المدرسية الشاملة</h3><p>متابعة محاور الأداء والتحصيل والشراكة المجتمعية والتوجيه.</p></div>
+        </article>
+        <article class="portfolio-card reveal" data-category="schools">
+            <a class="work-screenshot" href="media/dash10.png" target="_blank" rel="noopener"><img src="media/dash10.png" alt="لوحة السلوك المتميز" loading="lazy" decoding="async"></a>
+            <div class="portfolio-content"><span class="portfolio-category">المدارس</span><h3>لوحة السلوك المتميز</h3><p>تسجيل السلوك المتميز ومتابعة الإشادات والرسائل والتقارير.</p></div>
+        </article>
+        <article class="portfolio-card reveal" data-category="schools">
+            <a class="work-screenshot" href="media/dash11.png" target="_blank" rel="noopener"><img src="media/dash11.png" alt="متابعة برامج الخطة التشغيلية" loading="lazy" decoding="async"></a>
+            <div class="portfolio-content"><span class="portfolio-category">المدارس</span><h3>متابعة برامج الخطة التشغيلية</h3><p>رصد البرامج المنفذة وقيد التنفيذ ونسب الإنجاز والمسؤولين.</p></div>
+        </article>
+        <article class="portfolio-card reveal" data-category="schools">
+            <a class="work-screenshot" href="media/dash12.png" target="_blank" rel="noopener"><img src="media/dash12.png" alt="لوحة الانضباط المدرسي" loading="lazy" decoding="async"></a>
+            <div class="portfolio-content"><span class="portfolio-category">المدارس</span><h3>لوحة الانضباط المدرسي</h3><p>متابعة الحضور والغياب ومؤشرات الانضباط اليومية والأسبوعية والشهرية.</p></div>
+        </article>
+
+        
+
+        
+
+        
+
+        
+
+        <!-- 5 -->
+
+        <article
+            class="portfolio-card reveal"
+            data-category="charities"
+        >
+
+            <a class="work-screenshot" href="media/p1.png" target="_blank" rel="noopener">
+                <img src="media/p1.png" alt="داشبورد إدارة الجمعيات" loading="lazy" decoding="async">
+            </a>
+
+            <div class="portfolio-content">
+
+                <span class="portfolio-category">
+                    الجمعيات
+                </span>
+
+                <h3>
+                    داشبورد إدارة الجمعيات
+                </h3>
+
+                <p>
+                    متابعة المستفيدين
+                    والبرامج والمبادرات
+                    والمتطوعين وقياس الأثر.
+                </p>
+
+                <div class="portfolio-tags">
+                    <span>المستفيدون</span>
+                    <span>التطوع</span>
+                    <span>الأثر</span>
+                </div>
+
+            </div>
+
+        </article>
+
+        
+
+        
+
+        <!-- 8 -->
+
+        <article
+            class="portfolio-card reveal"
+            data-category="companies"
+        >
+
+            <a class="work-screenshot" href="media/p1.png" target="_blank" rel="noopener">
+                <img src="media/p1.png" alt="نظام التقارير" loading="lazy" decoding="async">
+            </a>
+
+            <div class="portfolio-content">
+
+                <span class="portfolio-category">
+                    الشركات
+                </span>
+
+                <h3>
+                    نظام التقارير
+                </h3>
+
+                <p>
+                    إنشاء وإدارة التقارير
+                    والمؤشرات وتلخيص الأداء
+                    في لوحة واحدة.
+                </p>
+
+                <div class="portfolio-tags">
+                    <span>تقارير</span>
+                    <span>تحليل</span>
+                    <span>PDF</span>
+                </div>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- =======================================================
+     PROCESS
+======================================================= -->
+
+<section
+    id="process"
+    class="section"
+>
+
+<div class="site-container">
+
+    <div class="section-heading reveal">
+
+        <span class="section-label">
+            آلية العمل
+        </span>
+
+        <h2>
+            من فكرتك إلى لوحة تعمل لأجلك
+        </h2>
+
+        <p>
+            خطوات واضحة تساعدنا على
+            بناء حل يناسب احتياجك الفعلي.
+        </p>
+
+    </div>
+
+    <div class="process-grid">
+
+        <div class="process-card reveal">
+            <div class="process-number">1</div>
+            <h3>نفهم احتياجك</h3>
+            <p>
+                نفهم المشكلة والهدف
+                وطبيعة الاستخدام.
+            </p>
+        </div>
+
+        <div class="process-card reveal">
+            <div class="process-number">2</div>
+            <h3>نحدد البيانات</h3>
+            <p>
+                نحدد الحقول والعمليات
+                والتقارير المطلوبة.
+            </p>
+        </div>
+
+        <div class="process-card reveal">
+            <div class="process-number">3</div>
+            <h3>نصمم الواجهة</h3>
+            <p>
+                نبني تجربة واضحة
+                ومتناسقة وسهلة.
+            </p>
+        </div>
+
+        <div class="process-card reveal">
+            <div class="process-number">4</div>
+            <h3>نطور الحل</h3>
+            <p>
+                نحول التصميم إلى
+                لوحة عملية ومتجاوبة.
+            </p>
+        </div>
+
+        <div class="process-card reveal">
+            <div class="process-number">5</div>
+            <h3>الاختبار</h3>
+            <p>
+                نتأكد من الاستجابة
+                والوظائف وتجربة الاستخدام.
+            </p>
+        </div>
+
+        <div class="process-card reveal">
+            <div class="process-number">6</div>
+            <h3>التسليم والدعم</h3>
+            <p>
+                نسلم المشروع مع
+                التوجيه والدعم المطلوب.
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- =======================================================
+     DASHBOARD FEATURES
+======================================================= -->
+
+<section class="section section-alt">
+
+<div class="site-container">
+
+    <div class="section-heading reveal">
+
+        <span class="section-label">
+            لوحة متكاملة
+        </span>
+
+        <h2>
+            كل ما تحتاجه في داشبورد واحد
+        </h2>
+
+        <p>
+            خصائص مرنة يمكن إضافتها
+            أو تخصيصها حسب نوع المشروع.
+        </p>
+
+    </div>
+
+    <div class="dashboard-showcase">
+
+        <div class="showcase-list">
+
+            <div class="showcase-item reveal">
+                <div class="showcase-item-icon">◫</div>
+                <div>
+                    <strong>إحصائيات فورية</strong>
+                    <span>مؤشرات تحدث بوضوح.</span>
+                </div>
+            </div>
+
+            <div class="showcase-item reveal">
+                <div class="showcase-item-icon">⌕</div>
+                <div>
+                    <strong>بحث وفلاتر</strong>
+                    <span>الوصول السريع للسجلات.</span>
+                </div>
+            </div>
+
+            <div class="showcase-item reveal">
+                <div class="showcase-item-icon">X</div>
+                <div>
+                    <strong>استيراد Excel</strong>
+                    <span>تسريع إدخال البيانات.</span>
+                </div>
+            </div>
+
+            <div class="showcase-item reveal">
+                <div class="showcase-item-icon">PDF</div>
+                <div>
+                    <strong>طباعة وتصدير</strong>
+                    <span>تقارير جاهزة للطباعة.</span>
+                </div>
+            </div>
+
+            <div class="showcase-item reveal">
+                <div class="showcase-item-icon">◉</div>
+                <div>
+                    <strong>إدارة السجلات</strong>
+                    <span>إضافة وتعديل ومتابعة.</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="showcase-dashboard reveal">
+
+            <div class="dashboard-screen">
+
+                <aside class="demo-sidebar">
+
+                    <div class="demo-logo">
+                        رصداد
+                        <small>RASDAD</small>
+                    </div>
+
+                    <div class="demo-menu">
+                        <span>الرئيسية</span>
+                        <span>التقارير</span>
+                        <span>السجلات</span>
+                        <span>التحليلات</span>
+                    </div>
+
+                </aside>
+
+                <div class="demo-main">
+
+                    <div class="demo-topbar">
+                        <div class="demo-welcome">
+                            <strong>
+                                لوحة المتابعة
+                            </strong>
+                            <small>
+                                جميع البيانات في مكان واحد
+                            </small>
+                        </div>
+                        <div class="demo-search"></div>
+                    </div>
+
+                    <div class="demo-stats">
+                        <div class="demo-stat">
+                            <span>المستفيدون</span>
+                            <strong>1,240</strong>
+                            <em>+12%</em>
+                        </div>
+                        <div class="demo-stat">
+                            <span>المبادرات</span>
+                            <strong>28</strong>
+                            <em>+6%</em>
+                        </div>
+                        <div class="demo-stat">
+                            <span>معدل الإنجاز</span>
+                            <strong>78%</strong>
+                            <em>+9%</em>
+                        </div>
+                        <div class="demo-stat">
+                            <span>التقارير</span>
+                            <strong>56</strong>
+                            <em>+14%</em>
+                        </div>
+                    </div>
+
+                    <div class="demo-chart-grid">
+                        <div class="demo-card">
+                            <div class="demo-card-title">
+                                نمو الأداء
+                            </div>
+                            <div class="line-visual">
+                                <svg
+                                    viewBox="0 0 400 120"
+                                    preserveAspectRatio="none"
+                                >
+                                    <path
+                                        d="
+                                        M0,100
+                                        C60,84 80,68 115,72
+                                        C145,74 170,38 210,50
+                                        C250,64 285,25 320,35
+                                        C350,44 370,25 400,17
+                                        "
+                                        fill="none"
+                                        stroke="#0E8B6A"
+                                        stroke-width="3"
+                                    />
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="demo-card">
+                            <div class="demo-card-title">
+                                التوزيع
+                            </div>
+                            <div class="bar-visual">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="showcase-list">
+
+            <div class="showcase-item reveal">
+                <div class="showcase-item-icon">◔</div>
+                <div>
+                    <strong>رسوم بيانية</strong>
+                    <span>قراءة أسرع للبيانات.</span>
+                </div>
+            </div>
+
+            <div class="showcase-item reveal">
+                <div class="showcase-item-icon">WA</div>
+                <div>
+                    <strong>WhatsApp</strong>
+                    <span>تكاملات حسب المشروع.</span>
+                </div>
+            </div>
+
+            <div class="showcase-item reveal">
+                <div class="showcase-item-icon">▣</div>
+                <div>
+                    <strong>Responsive</strong>
+                    <span>جوال وآيباد وكمبيوتر.</span>
+                </div>
+            </div>
+
+            <div class="showcase-item reveal">
+                <div class="showcase-item-icon">♙</div>
+                <div>
+                    <strong>صلاحيات المستخدمين</strong>
+                    <span>إضافة الحسابات والصلاحيات غير متاحة.</span>
+                </div>
+            </div>
+
+            <div class="showcase-item reveal">
+                <div class="showcase-item-icon">⚙</div>
+                <div>
+                    <strong>تخصيص كامل</strong>
+                    <span>حسب طبيعة عمل الجهة.</span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- =======================================================
+     SERVICES
+======================================================= -->
+
+<section
+    id="services"
+    class="section"
+>
+
+<div class="site-container">
+
+    <div class="section-heading reveal">
+
+        <span class="section-label">
+            خدمات رصداد
+        </span>
+
+        <h2>
+            حلول رقمية تبدأ من احتياجك
+        </h2>
+
+    </div>
+
+    <div class="services-grid">
+
+        <article class="service-card reveal">
+            <div class="service-icon">▦</div>
+            <h3>تصميم داشبورد</h3>
+            <p>
+                لوحات متابعة احترافية
+                بواجهة واضحة وحديثة.
+            </p>
+        </article>
+
+        <article class="service-card reveal">
+            <div class="service-icon">⚙</div>
+            <h3>أنظمة مخصصة</h3>
+            <p>
+                حلول مصممة حسب
+                دورة عمل الجهة.
+            </p>
+        </article>
+
+        <article class="service-card reveal">
+            <div class="service-icon">◫</div>
+            <h3>تحليل البيانات</h3>
+            <p>
+                تحويل الأرقام إلى
+                مؤشرات سهلة القراءة.
+            </p>
+        </article>
+
+        <article class="service-card reveal">
+            <div class="service-icon">▤</div>
+            <h3>تقارير رقمية</h3>
+            <p>
+                تقارير واضحة وقابلة
+                للطباعة والتصدير حسب متطلبات المشروع والإمكانات المتاحة.
+            </p>
+        </article>
+
+        <article class="service-card reveal">
+            <div class="service-icon">🎓</div>
+            <h3>أنظمة المدارس</h3>
+            <p>
+                حلول للمتابعة والتنظيم
+                والتقارير المدرسية.
+            </p>
+        </article>
+
+        <article class="service-card reveal">
+            <div class="service-icon">♡</div>
+            <h3>أنظمة الجمعيات</h3>
+            <p>
+                متابعة البرامج والمستفيدين
+                والمبادرات والأثر.
+            </p>
+        </article>
+
+        <article class="service-card reveal">
+            <div class="service-icon">▥</div>
+            <h3>أنظمة الشركات</h3>
+            <p>
+                لوحات لإدارة العمليات
+                والموظفين والأداء.
+            </p>
+        </article>
+
+        <article class="service-card reveal">
+            <div class="service-icon">+</div>
+            <h3>حلول حسب الطلب</h3>
+            <p>
+                نناقش فكرتك ونبني
+                الحل الأنسب لها.
+            </p>
+        </article>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- =======================================================
+     PRICING
+======================================================= -->
+
+<section
+    id="pricing"
+    class="section section-alt"
+>
+
+<div class="site-container">
+
+    <div class="section-heading reveal">
+
+        <span class="section-label">
+            الخيارات
+        </span>
+
+        <h2>
+            اختر مستوى المشروع المناسب
+        </h2>
+
+        <p>
+            لا نضع سعرًا ثابتًا لأن
+            كل مشروع يختلف حسب احتياجه
+            والخصائص المطلوبة.
+        </p>
+
+    </div>
+
+    <div class="pricing-grid">
+
+        <article class="price-card reveal">
+
+            <span class="price-label">
+                البداية
+            </span>
+
+            <h3>
+                لوحة بسيطة
+            </h3>
+
+            <p>
+                مناسبة للحلول الصغيرة (عمل واحد)
+                التي تحتاج إلى إدخال
+                ومتابعة وإحصائيات أساسية.
+            </p>
+
+            <ul class="price-features">
+                <li>واجهة احترافية</li>
+                <li>بطاقات إحصائية</li>
+                <li>بحث وفلاتر</li>
+                <li>تصميم متجاوب</li>
+            </ul>
+
+            <strong class="price-amount">250 ريال</strong>
+
+        </article>
+
+        <article class="price-card featured reveal">
+
+            <span class="price-popular">
+                الأكثر طلبًا
+            </span>
+
+            <span class="price-label">
+                احترافي
+            </span>
+
+            <h3>
+                لوحة احترافية
+            </h3>
+
+            <p>
+                للجهات التي تحتاج
+                إلى تحليلات وتقارير
+                ووظائف متقدمة (أعمال متعددة).
+            </p>
+
+            <ul class="price-features">
+                <li>رسوم وتحليلات</li>
+                <li>استيراد Excel</li>
+                <li>طباعة وتقارير</li>
+                <li>وظائف مخصصة</li>
+            </ul>
+
+            <strong class="price-amount">350 ريال</strong>
+
+        </article>
+
+        <article class="price-card reveal" id="new-design">
+
+            <span class="price-label">
+                متقدم
+            </span>
+
+            <h3>
+                نظام مخصص
+            </h3>
+
+            <p>
+                نظام متكامل مبني
+                حسب دورة عمل الجهة
+                واحتياجات المستخدمين.
+            </p>
+
+            <ul class="price-features">
+                <li>هيكلة حسب الطلب</li>
+                <li>تقارير متقدمة</li>
+            </ul>
+
+            <a
+                href="#project-request"
+                class="btn btn-outline btn-full"
+            >
+                اطلب عرض سعر
+            </a>
+
+        </article>
+
+    </div>
+
+    <p class="price-note">
+        السعر النهائي يتم تحديده
+        بعد فهم متطلبات المشروع،
+        عدد الصفحات، الوظائف،
+        التكاملات ومستوى التطوير المطلوب.
+    </p>
+
+</div>
+
+</section>
+
+<!-- =======================================================
+     REQUEST PROJECT
+======================================================= -->
+
+<section
+    id="project-request"
+    class="section"
+>
+
+<div class="site-container">
+
+    <div class="request-shell">
+
+        <div class="request-copy reveal">
+
+            <span class="section-label">
+                ابدأ معنا
+            </span>
+
+            <h2>
+                لديك فكرة؟
+                دعنا نحولها إلى نظام
+            </h2>
+
+            <p>
+                اشرح لنا احتياجك،
+                وسنساعدك على اختيار
+                شكل اللوحة والخصائص
+                المناسبة لطبيعة عملك.
+            </p>
+
+            <div class="request-benefits">
+
+                <span>
+                    تصميم حسب احتياجك
+                </span>
+
+                <span>
+                    قابل للتطوير مستقبلًا
+                </span>
+
+                <span>
+                    متجاوب مع جميع الأجهزة
+                </span>
+
+                <span>
+                    إمكانية إضافة التقارير والتكاملات
+                </span>
+
+            </div>
+
+        </div>
+
+        <form
+            class="request-form reveal"
+            id="projectForm"
+            novalidate
+        >
+
+            <div class="form-grid">
+
+                <div class="form-field">
+
+                    <label for="clientName">
+                        الاسم *
+                    </label>
+
+                    <input
+                        id="clientName"
+                        class="form-control"
+                        type="text"
+                        maxlength="80"
+                        required
+                        autocomplete="name"
+                    >
+
+                </div>
+
+                <div class="form-field">
+
+                    <label for="clientPhone">
+                        رقم الجوال *
+                    </label>
+
+                    <input
+                        id="clientPhone"
+                        class="form-control"
+                        type="tel"
+                        inputmode="tel"
+                        maxlength="20"
+                        placeholder="05xxxxxxxx"
+                        required
+                        autocomplete="tel"
+                    >
+
+                </div>
+
+                <div class="form-field">
+
+                    <label for="clientEmail">
+                        البريد الإلكتروني
+                    </label>
+
+                    <input
+                        id="clientEmail"
+                        class="form-control"
+                        type="email"
+                        maxlength="120"
+                        autocomplete="email"
+                    >
+
+                </div>
+
+                <div class="form-field">
+
+                    <label for="entityType">
+                        نوع الجهة *
+                    </label>
+
+                    <select
+                        id="entityType"
+                        class="form-control"
+                        required
+                    >
+                        <option value="">
+                            اختر
+                        </option>
+
+                        <option>
+                            مدرسة
+                        </option>
+
+                        <option>
+                            جمعية
+                        </option>
+
+                        <option>
+                            شركة
+                        </option>
+
+                        <option>
+                            مؤسسة
+                        </option>
+
+                        <option>
+                            فرد
+                        </option>
+
+                        <option>
+                            أخرى
+                        </option>
+                    </select>
+
+                </div>
+
+                <div class="form-field">
+
+                    <label for="projectType">
+                        نوع المشروع *
+                    </label>
+
+                    <select
+                        id="projectType"
+                        class="form-control"
+                        required
+                    >
+                        <option value="">
+                            اختر
+                        </option>
+
+                        <option>
+                            داشبورد
+                        </option>
+
+                        <option>
+                            نظام إداري
+                        </option>
+
+                        <option>
+                            تقارير
+                        </option>
+
+                        <option>
+                            متابعة
+                        </option>
+
+                        <option>
+                            نظام مخصص
+                        </option>
+
+                        <option>
+                            أخرى
+                        </option>
+                    </select>
+
+                </div>
+
+                <div class="form-field">
+
+                    <label for="deliveryDate">
+                        موعد التنفيذ المتوقع
+                    </label>
+
+                    <input
+                        id="deliveryDate"
+                        class="form-control"
+                        type="date"
+                    >
+
+                </div>
+
+                <div class="form-field full">
+
+                    <label for="projectDescription">
+                        وصف الاحتياج *
+                    </label>
+
+                    <textarea
+                        id="projectDescription"
+                        class="form-control"
+                        maxlength="1200"
+                        required
+                        placeholder="اشرح لنا باختصار ما الذي تريد متابعته أو تنظيمه..."
+                    ></textarea>
+
+                </div>
+
+                <div class="form-field full">
+
+                    <label for="requiredFeatures">
+                        الخصائص المطلوبة
+                    </label>
+
+                    <textarea
+                        id="requiredFeatures"
+                        class="form-control"
+                        maxlength="1000"
+                        placeholder="مثال: استيراد Excel، طباعة PDF، تقارير، واتساب..."
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+            <div class="form-actions">
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                >
+                    إرسال الطلب
+                </button>
+
+                <button
+                    type="button"
+                    class="btn btn-outline"
+                    id="projectWhatsApp"
+                >
+                    إرسال عبر WhatsApp
+                </button>
+
+            </div>
+
+            <div
+                class="form-status"
+                id="projectStatus"
+                role="status"
+                aria-live="polite"
+            ></div>
+
+        </form>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- =======================================================
+     FAQ
+======================================================= -->
+
+<section
+    id="faq"
+    class="section section-alt"
+>
+
+<div class="site-container">
+
+    <div class="section-heading reveal">
+
+        <span class="section-label">
+            الأسئلة الشائعة
+        </span>
+
+        <h2>
+            لديك سؤال؟
+        </h2>
+
+        <p>
+            هذه إجابات على أكثر
+            الأسئلة التي قد يحتاجها
+            العميل قبل طلب المشروع.
+        </p>
+
+    </div>
+
+    <div class="faq-list">
+
+        <article class="faq-item reveal">
+
+            <button
+                type="button"
+                class="faq-question"
+                aria-expanded="false"
+            >
+                هل يمكن تصميم داشبورد حسب طلبي؟
+                <span class="faq-symbol">+</span>
+            </button>
+
+            <div class="faq-answer">
+                <p>
+                    نعم، يتم تصميم الداشبورد
+                    حسب طبيعة عملك والبيانات
+                    والتقارير التي تحتاجها.
+                </p>
+            </div>
+
+        </article>
+
+        <article class="faq-item reveal">
+
+            <button
+                type="button"
+                class="faq-question"
+                aria-expanded="false"
+            >
+                هل يعمل النظام على الجوال؟
+                <span class="faq-symbol">+</span>
+            </button>
+
+            <div class="faq-answer">
+                <p>
+                    يتم تصميم الواجهات لتعمل
+                    بشكل متجاوب على الجوال
+                    والآيباد والكمبيوتر.
+                </p>
+            </div>
+
+        </article>
+
+        <article class="faq-item reveal">
+
+            <button
+                type="button"
+                class="faq-question"
+                aria-expanded="false"
+            >
+                هل يمكن استيراد بيانات Excel؟
+                <span class="faq-symbol">+</span>
+            </button>
+
+            <div class="faq-answer">
+                <p>
+                    نعم، يمكن إضافة الاستيراد
+                    من Excel عندما تكون طبيعة
+                    النظام تدعم ذلك.
+                </p>
+            </div>
+
+        </article>
+
+        <article class="faq-item reveal">
+
+            <button
+                type="button"
+                class="faq-question"
+                aria-expanded="false"
+            >
+                هل يمكن إضافة الطباعة؟
+                <span class="faq-symbol">+</span>
+            </button>
+
+            <div class="faq-answer">
+                <p>
+                    نعم، يمكن إنشاء تقارير
+                    وجداول ونماذج مهيأة
+                    للطباعة أو PDF، ولكن ليس دائمًا؛ إذ يعتمد ذلك على طبيعة المشروع ومتطلباته.
+                </p>
+            </div>
+
+        </article>
+
+        <article class="faq-item reveal">
+
+            <button
+                type="button"
+                class="faq-question"
+                aria-expanded="false"
+            >
+                هل يمكن ربط WhatsApp؟
+                <span class="faq-symbol">+</span>
+            </button>
+
+            <div class="faq-answer">
+                <p>
+                    يمكن إضافة روابط ورسائل
+                    WhatsApp، أما الأتمتة الكاملة
+                    فتحتاج إلى تكامل رسمي مناسب.
+                </p>
+            </div>
+
+        </article>
+
+        <article class="faq-item reveal">
+
+            <button
+                type="button"
+                class="faq-question"
+                aria-expanded="false"
+            >
+                هل يمكن تعديل النظام مستقبلًا؟
+                <span class="faq-symbol">+</span>
+            </button>
+
+            <div class="faq-answer">
+                <p>
+                    نعم، يتم بناء الواجهة
+                    بطريقة قابلة للتطوير
+                    وإضافة وظائف جديدة.
+                </p>
+            </div>
+
+        </article>
+
+        <article class="faq-item reveal">
+
+            <button
+                type="button"
+                class="faq-question"
+                aria-expanded="false"
+            >
+                هل أستطيع إضافة مستخدمين وصلاحيات؟
+                <span class="faq-symbol">+</span>
+            </button>
+
+            <div class="faq-answer">
+                <p>
+                    لا يمكن إضافة نظام حسابات
+                    وصلاحيات عند تحويل المشروع
+                    إلى نظام Backend متكامل.
+                </p>
+            </div>
+
+        </article>
+
+        <article class="faq-item reveal">
+
+            <button
+                type="button"
+                class="faq-question"
+                aria-expanded="false"
+            >
+                هل يوجد دعم بعد التسليم؟
+                <span class="faq-symbol">+</span>
+            </button>
+
+            <div class="faq-answer">
+                <p>
+                    يمكن تحديد مستوى الدعم
+                    والصيانة ضمن اتفاق المشروع
+                    حسب طبيعة النظام.
+                </p>
+            </div>
+
+        </article>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- =======================================================
+     CONTACT
+======================================================= -->
+
+<section
+    id="contact"
+    class="section"
+>
+
+<div class="site-container">
+
+    <div class="section-heading reveal">
+
+        <span class="section-label">
+            اتصل بنا
+        </span>
+
+        <h2>
+            تواصل مع رصداد
+        </h2>
+
+        <p>
+            أخبرنا عن فكرتك أو استفسارك،
+            وسنساعدك في الوصول إلى
+            الحل المناسب.
+        </p>
+
+    </div>
+
+    <div class="contact-grid">
+
+        <div class="contact-cards">
+
+            <div class="contact-card reveal">
+
+                <div class="contact-icon">
+                    WA
+                </div>
+
+                <div>
+                    <h3>
+                        WhatsApp
+                    </h3>
+
+                    <p>
+                        <a href="https://wa.me/966563962821" target="_blank" rel="noopener" dir="ltr">0563962821</a>
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="contact-card reveal">
+
+                <div class="contact-icon">
+                    @
+                </div>
+
+                <div>
+                    <h3>
+                        Email
+                    </h3>
+
+                    <p>
+                        لاستقبال الاستفسارات والطلبات.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="contact-card reveal">
+
+                <div class="contact-icon">
+                    ◎
+                </div>
+
+                <div>
+                    <h3>
+                        Social Media
+                    </h3>
+
+                    <p>
+                        <a href="https://snapchat.com/t/sEdifOUR" target="_blank" rel="noopener">سناب شات</a> · <a href="https://www.tiktok.com/@ghgh2821" target="_blank" rel="noopener">تيك توك</a>
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <form
+            class="contact-form-card reveal"
+            id="contactForm"
+            novalidate
+        >
+
+            <div class="form-grid">
+
+                <div class="form-field">
+
+                    <label for="contactName">
+                        الاسم *
+                    </label>
+
+                    <input
+                        id="contactName"
+                        class="form-control"
+                        type="text"
+                        maxlength="80"
+                        required
+                    >
+
+                </div>
+
+                <div class="form-field">
+
+                    <label for="contactEmail">
+                        البريد الإلكتروني *
+                    </label>
+
+                    <input
+                        id="contactEmail"
+                        class="form-control"
+                        type="email"
+                        maxlength="120"
+                        required
+                    >
+
+                </div>
+
+                <div class="form-field full">
+
+                    <label for="contactMessage">
+                        رسالتك *
+                    </label>
+
+                    <textarea
+                        id="contactMessage"
+                        class="form-control"
+                        maxlength="1000"
+                        required
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+            <div class="form-actions">
+
+                <button
+                    class="btn btn-primary"
+                    type="submit"
+                >
+                    إرسال الرسالة
+                </button>
+
+            </div>
+
+            <div
+                class="form-status"
+                id="contactStatus"
+                role="status"
+                aria-live="polite"
+            ></div>
+
+        </form>
+
+    </div>
+
+</div>
+
+</section>
+
+</main>
+
+<!-- Footer Loaded Here -->
+
+<div id="footer-placeholder"></div>
+
+<!-- WhatsApp -->
+
+<a
+    href="https://wa.me/966563962821" target="_blank" rel="noopener"
+    class="whatsapp-floating"
+    aria-label="التواصل"
+>
+    <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.7 2.79a2 2 0 0 1-.45 2.11L8.09 9.89a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.89.34 1.83.58 2.79.7A2 2 0 0 1 22 16.92z"/>
+    </svg>
+    <span>
+        التواصل
+    </span>
+</a>
+
+<script>
+
+/* =========================================================
+   SAFE COMPONENT LOADER
+   Loads HTML + CSS + JS from header/footer files
+========================================================= */
+
+async function loadComponent(
+    targetId,
+    filePath
+) {
+    const target =
+        document.getElementById(targetId);
+
+    if (!target) {
+        return;
+    }
+
+    try {
+        const response =
+            await fetch(
+                filePath,
+                {
+                    cache: "no-cache"
+                }
+            );
+
+        if (!response.ok) {
+            throw new Error(
+                "Failed to load " +
+                filePath
+            );
+        }
+
+        const source =
+            await response.text();
+
+        const parser =
+            new DOMParser();
+
+        const documentFragment =
+            parser.parseFromString(
+                source,
+                "text/html"
+            );
+
+        /* Add styles */
+
+        documentFragment
+            .querySelectorAll("style")
+            .forEach(style => {
+
+                const newStyle =
+                    document.createElement(
+                        "style"
+                    );
+
+                newStyle.textContent =
+                    style.textContent;
+
+                document.head.appendChild(
+                    newStyle
+                );
+            });
+
+        /* Add visible HTML */
+
+        const nodes =
+            [...documentFragment.body.children]
+                .filter(node =>
+                    node.tagName !== "SCRIPT"
+                );
+
+        nodes.forEach(node => {
+            target.appendChild(
+                document.importNode(
+                    node,
+                    true
+                )
+            );
+        });
+
+        /* Execute scripts */
+
+        documentFragment
+            .querySelectorAll("script")
+            .forEach(script => {
+
+                const newScript =
+                    document.createElement(
+                        "script"
+                    );
+
+                if (script.src) {
+                    newScript.src =
+                        script.src;
+                } else {
+                    newScript.textContent =
+                        script.textContent;
+                }
+
+                document.body.appendChild(
+                    newScript
+                );
+            });
+
+    } catch (error) {
+
+        console.error(
+            "RASDAD component error:",
+            error
+        );
+
+        target.innerHTML =
+            `
+            <div
+                style="
+                    padding:14px;
+                    text-align:center;
+                    background:#FEF3F2;
+                    color:#B42318;
+                    font-family:Tajawal;
+                "
+            >
+                تعذر تحميل جزء من الموقع.
+                شغّل المشروع عبر Live Server
+                أو خادم محلي.
+            </div>
+            `;
+    }
+}
+
+/* =========================================================
+   INITIALIZATION
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    async () => {
+
+        await Promise.all([
+            loadComponent(
+                "header-placeholder",
+                "header.html"
+            ),
+            loadComponent(
+                "footer-placeholder",
+                "footer.html"
+            )
+        ]);
+
+        initReveal();
+        initPortfolio();
+        initFAQ();
+        initForms();
+        initMinDate();
+
+        const loader =
+            document.getElementById(
+                "pageLoader"
+            );
+
+        document.body.classList.remove(
+            "loading"
+        );
+
+        if (loader) {
+            setTimeout(
+                () => {
+                    loader.classList.add(
+                        "hide"
+                    );
+                },
+                250
+            );
+        }
+    }
+);
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+function initReveal() {
+
+    const items =
+        document.querySelectorAll(
+            ".reveal"
+        );
+
+    if (
+        !("IntersectionObserver" in window)
+    ) {
+        items.forEach(
+            item =>
+                item.classList.add(
+                    "visible"
+                )
+        );
+
+        return;
+    }
+
+    const observer =
+        new IntersectionObserver(
+            entries => {
+
+                entries.forEach(
+                    entry => {
+
+                        if (
+                            !entry.isIntersecting
+                        ) {
+                            return;
+                        }
+
+                        entry.target
+                            .classList.add(
+                                "visible"
+                            );
+
+                        observer.unobserve(
+                            entry.target
+                        );
+                    }
+                );
+            },
+            {
+                threshold: 0.12
+            }
+        );
+
+    items.forEach(
+        item =>
+            observer.observe(item)
+    );
+}
+
+/* =========================================================
+   PORTFOLIO FILTERS
+========================================================= */
+
+function initPortfolio() {
+
+    const buttons =
+        document.querySelectorAll(
+            ".filter-btn"
+        );
+
+    const cards =
+        document.querySelectorAll(
+            ".portfolio-card"
+        );
+
+    buttons.forEach(button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                const filter =
+                    button.dataset.filter;
+
+                buttons.forEach(
+                    btn =>
+                        btn.classList.remove(
+                            "active"
+                        )
+                );
+
+                button.classList.add(
+                    "active"
+                );
+
+                cards.forEach(card => {
+
+                    const matches =
+                        filter === "all" ||
+                        card.dataset.category ===
+                        filter;
+
+                    card.classList.toggle(
+                        "hidden",
+                        !matches
+                    );
+                });
+            }
+        );
+    });
+}
+
+/* =========================================================
+   FAQ
+========================================================= */
+
+function initFAQ() {
+
+    const items =
+        document.querySelectorAll(
+            ".faq-item"
+        );
+
+    items.forEach(item => {
+
+        const question =
+            item.querySelector(
+                ".faq-question"
+            );
+
+        if (!question) {
+            return;
+        }
+
+        question.addEventListener(
+            "click",
+            () => {
+
+                const currentlyOpen =
+                    item.classList.contains(
+                        "open"
+                    );
+
+                items.forEach(other => {
+
+                    other.classList.remove(
+                        "open"
+                    );
+
+                    const otherButton =
+                        other.querySelector(
+                            ".faq-question"
+                        );
+
+                    if (otherButton) {
+                        otherButton.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+                    }
+                });
+
+                if (!currentlyOpen) {
+
+                    item.classList.add(
+                        "open"
+                    );
+
+                    question.setAttribute(
+                        "aria-expanded",
+                        "true"
+                    );
+                }
+            }
+        );
+    });
+}
+
+/* =========================================================
+   SECURITY HELPERS
+========================================================= */
+
+function sanitizeText(value) {
+
+    return String(value || "")
+        .replace(/[<>]/g, "")
+        .trim();
+}
+
+function validPhone(phone) {
+
+    const cleaned =
+        phone.replace(
+            /[\s()+-]/g,
+            ""
+        );
+
+    return /^((00966|966|0)?5\d{8})$/
+        .test(cleaned);
+}
+
+function validEmail(email) {
+
+    if (!email) {
+        return true;
+    }
+
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        .test(email);
+}
+
+function showStatus(
+    element,
+    message,
+    type
+) {
+    element.textContent =
+        message;
+
+    element.className =
+        "form-status show " +
+        type;
+}
+
+/* =========================================================
+   FORMS
+========================================================= */
+
+async function saveLead(form, status, data) {
+    const button = form.querySelector('[type="submit"]');
+    button.disabled = true;
+    try {
+        const response = await fetch('/api/leads', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(data)});
+        if (!response.ok) throw new Error();
+        showStatus(status, 'تم استلام بياناتك بنجاح، وسنتواصل معك قريبًا.', 'success');
+        form.reset();
+    } catch {
+        showStatus(status, 'تعذر حفظ البيانات. حاول مجددًا أو تواصل عبر واتساب 0563962821.', 'error');
+    } finally { button.disabled = false; }
+}
+
+function initForms() {
+
+    initProjectForm();
+    initContactForm();
+}
+
+function initProjectForm() {
+
+    const form =
+        document.getElementById(
+            "projectForm"
+        );
+
+    const status =
+        document.getElementById(
+            "projectStatus"
+        );
+
+    const whatsapp =
+        document.getElementById(
+            "projectWhatsApp"
+        );
+
+    if (
+        !form ||
+        !status
+    ) {
+        return;
+    }
+
+    function getData() {
+
+        return {
+            name:
+                sanitizeText(
+                    document.getElementById(
+                        "clientName"
+                    ).value
+                ),
+
+            phone:
+                sanitizeText(
+                    document.getElementById(
+                        "clientPhone"
+                    ).value
+                ),
+
+            email:
+                sanitizeText(
+                    document.getElementById(
+                        "clientEmail"
+                    ).value
+                ),
+
+            entity:
+                sanitizeText(
+                    document.getElementById(
+                        "entityType"
+                    ).value
+                ),
+
+            type:
+                sanitizeText(
+                    document.getElementById(
+                        "projectType"
+                    ).value
+                ),
+
+            date:
+                sanitizeText(
+                    document.getElementById(
+                        "deliveryDate"
+                    ).value
+                ),
+
+            description:
+                sanitizeText(
+                    document.getElementById(
+                        "projectDescription"
+                    ).value
+                ),
+
+            features:
+                sanitizeText(
+                    document.getElementById(
+                        "requiredFeatures"
+                    ).value
+                )
+        };
+    }
+
+    function validate(data) {
+
+        if (
+            !data.name ||
+            !data.phone ||
+            !data.entity ||
+            !data.type ||
+            !data.description
+        ) {
+            return "يرجى تعبئة الحقول المطلوبة.";
+        }
+
+        if (
+            data.name.length < 2
+        ) {
+            return "يرجى كتابة اسم صحيح.";
+        }
+
+        if (
+            !validPhone(data.phone)
+        ) {
+            return "يرجى كتابة رقم جوال سعودي صحيح.";
+        }
+
+        if (
+            !validEmail(data.email)
+        ) {
+            return "يرجى التحقق من البريد الإلكتروني.";
+        }
+
+        return "";
+    }
+
+    form.addEventListener(
+        "submit",
+        async event => {
+
+            event.preventDefault();
+
+            const data =
+                getData();
+
+            const error =
+                validate(data);
+
+            if (error) {
+
+                showStatus(
+                    status,
+                    error,
+                    "error"
+                );
+
+                return;
+            }
+
+            await saveLead(form, status, {kind: "request", ...data});
+        }
+    );
+
+    if (whatsapp) {
+
+        whatsapp.addEventListener(
+            "click",
+            () => {
+
+                const data =
+                    getData();
+
+                const error =
+                    validate(data);
+
+                if (error) {
+
+                    showStatus(
+                        status,
+                        error,
+                        "error"
+                    );
+
+                    return;
+                }
+
+                /*
+                    استبدلي الرقم التالي
+                    برقم واتساب رصداد الحقيقي
+                    بصيغة:
+                    9665XXXXXXXX
+                */
+
+                const WHATSAPP_NUMBER =
+                    "966563962821";
+
+                const message =
+`السلام عليكم،
+لدي طلب مشروع جديد من موقع رصداد.
+
+الاسم: ${data.name}
+رقم الجوال: ${data.phone}
+البريد: ${data.email || "غير مضاف"}
+نوع الجهة: ${data.entity}
+نوع المشروع: ${data.type}
+موعد التنفيذ المتوقع: ${data.date || "غير محدد"}
+
+وصف الاحتياج:
+${data.description}
+
+الخصائص المطلوبة:
+${data.features || "غير محددة"}`;
+
+                const url =
+                    "https://wa.me/" +
+                    WHATSAPP_NUMBER +
+                    "?text=" +
+                    encodeURIComponent(
+                        message
+                    );
+
+                window.open(
+                    url,
+                    "_blank",
+                    "noopener,noreferrer"
+                );
+            }
+        );
+    }
+}
+
+function initContactForm() {
+
+    const form =
+        document.getElementById(
+            "contactForm"
+        );
+
+    const status =
+        document.getElementById(
+            "contactStatus"
+        );
+
+    if (
+        !form ||
+        !status
+    ) {
+        return;
+    }
+
+    form.addEventListener(
+        "submit",
+        async event => {
+
+            event.preventDefault();
+
+            const name =
+                sanitizeText(
+                    document.getElementById(
+                        "contactName"
+                    ).value
+                );
+
+            const email =
+                sanitizeText(
+                    document.getElementById(
+                        "contactEmail"
+                    ).value
+                );
+
+            const message =
+                sanitizeText(
+                    document.getElementById(
+                        "contactMessage"
+                    ).value
+                );
+
+            if (
+                !name ||
+                !email ||
+                !message
+            ) {
+
+                showStatus(
+                    status,
+                    "يرجى تعبئة جميع الحقول.",
+                    "error"
+                );
+
+                return;
+            }
+
+            if (
+                !validEmail(email)
+            ) {
+
+                showStatus(
+                    status,
+                    "البريد الإلكتروني غير صحيح.",
+                    "error"
+                );
+
+                return;
+            }
+
+            await saveLead(form, status, {kind: "inquiry", name, email, message});
+        }
+    );
+}
+
+/* =========================================================
+   DATE
+========================================================= */
+
+function initMinDate() {
+
+    const input =
+        document.getElementById(
+            "deliveryDate"
+        );
+
+    if (!input) {
+        return;
+    }
+
+    const today =
+        new Date();
+
+    const year =
+        today.getFullYear();
+
+    const month =
+        String(
+            today.getMonth() + 1
+        ).padStart(
+            2,
+            "0"
+        );
+
+    const day =
+        String(
+            today.getDate()
+        ).padStart(
+            2,
+            "0"
+        );
+
+    input.min =
+        `${year}-${month}-${day}`;
+}
+
+</script>
+
+</body>
+</html>

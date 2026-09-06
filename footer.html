@@ -1,0 +1,679 @@
+<style>@import url("media/community.css");</style>
+<section id="community" dir="rtl" aria-label="زوار الموقع وتقييماتهم"></section>
+<script src="media/community.js"></script>
+<style>
+    .site-footer {
+        position: relative;
+
+        overflow: hidden;
+
+        padding:
+            75px 0 24px;
+
+        color: #FFFFFF;
+
+        background:
+            radial-gradient(
+                circle at 80% 0%,
+                rgba(167, 215, 198, 0.15),
+                transparent 28%
+            ),
+            radial-gradient(
+                circle at 15% 100%,
+                rgba(200, 180, 246, 0.10),
+                transparent 26%
+            ),
+            linear-gradient(
+                140deg,
+                #0A3031,
+                #0F3D3E
+            );
+    }
+
+    .site-footer::before {
+        content: "";
+
+        width: 300px;
+        height: 300px;
+
+        position: absolute;
+
+        top: -180px;
+        left: -100px;
+
+        border-radius: 50%;
+
+        border:
+            1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .footer-container {
+        width:
+            min(1200px, calc(100% - 32px));
+
+        margin-inline: auto;
+
+        position: relative;
+
+        z-index: 2;
+    }
+
+    .footer-grid {
+        display: grid;
+
+        grid-template-columns:
+            1.5fr 0.85fr 0.9fr 1.1fr;
+
+        gap: 45px;
+    }
+
+    /* =========================
+       BRAND
+    ========================= */
+
+    .footer-brand {
+        max-width: 360px;
+    }
+
+    .footer-logo {
+        display: flex;
+        align-items: center;
+
+        gap: 12px;
+
+        margin-bottom: 20px;
+    }
+
+    .footer-logo-mark {
+        width: 54px;
+        height: 54px;
+
+        border-radius: 17px;
+
+        display: grid;
+        place-items: center;
+
+        background:
+            linear-gradient(
+                140deg,
+                #0E8B6A,
+                #A7D7C6
+            );
+    }
+
+    .footer-bars {
+        display: flex;
+        align-items: flex-end;
+
+        gap: 4px;
+
+        height: 27px;
+    }
+
+    .footer-bars span {
+        width: 6px;
+
+        border-radius: 6px 6px 2px 2px;
+
+        background: #FFFFFF;
+    }
+
+    .footer-bars span:nth-child(1) {
+        height: 10px;
+    }
+
+    .footer-bars span:nth-child(2) {
+        height: 18px;
+
+        background: #D8F3EA;
+    }
+
+    .footer-bars span:nth-child(3) {
+        height: 26px;
+
+        background: #E4DAFF;
+    }
+
+    .footer-logo strong {
+        display: block;
+
+        font-size: 26px;
+        font-weight: 800;
+    }
+
+    .footer-logo small {
+        display: block;
+
+        margin-top: 6px;
+
+        color: #A7D7C6;
+
+        font-family: "Inter", Arial, sans-serif;
+        font-size: 9px;
+        font-weight: 600;
+
+        letter-spacing: 5px;
+    }
+
+    .footer-brand p {
+        margin: 0;
+
+        color:
+            rgba(255, 255, 255, 0.72);
+
+        font-size: 14px;
+
+        line-height: 2;
+    }
+
+    .footer-slogan {
+        display: inline-flex;
+
+        margin-top: 20px;
+
+        padding: 8px 12px;
+
+        border-radius: 50px;
+
+        color: #A7D7C6;
+
+        background:
+            rgba(255, 255, 255, 0.06);
+
+        border:
+            1px solid rgba(255, 255, 255, 0.08);
+
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    /* =========================
+       COLUMNS
+    ========================= */
+
+    .footer-column h3 {
+        margin: 0 0 20px;
+
+        color: #FFFFFF;
+
+        font-size: 16px;
+        font-weight: 700;
+    }
+
+    .footer-links {
+        display: grid;
+
+        gap: 12px;
+    }
+
+    .footer-links a {
+        width: fit-content;
+
+        color:
+            rgba(255, 255, 255, 0.68);
+
+        text-decoration: none;
+
+        font-size: 14px;
+
+        transition:
+            color 0.2s ease,
+            transform 0.2s ease;
+    }
+
+    .footer-links a:hover {
+        color: var(--rasdad-mint, #A7D7C6);
+
+        transform: translateX(-4px);
+    }
+
+    /* =========================
+       CONTACT CARD
+    ========================= */
+
+    .footer-contact {
+        padding: 21px;
+
+        border-radius: 18px;
+
+        background:
+            rgba(255, 255, 255, 0.06);
+
+        border:
+            1px solid rgba(255, 255, 255, 0.11);
+    }
+
+    .footer-contact p {
+        margin: 0 0 16px;
+
+        color:
+            rgba(255, 255, 255, 0.72);
+
+        font-size: 13px;
+
+        line-height: 1.9;
+    }
+
+    .footer-contact-actions {
+        display: flex;
+        flex-wrap: wrap;
+
+        gap: 8px;
+    }
+
+    .footer-contact-btn {
+        min-height: 41px;
+
+        padding-inline: 14px;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 10px;
+
+        color: #0F3D3E;
+
+        background: #FFFFFF;
+
+        text-decoration: none;
+
+        font-size: 12px;
+        font-weight: 700;
+
+        transition:
+            transform 0.2s ease,
+            opacity 0.2s ease;
+    }
+
+    .footer-contact-btn:hover {
+        transform: translateY(-2px);
+    }
+
+    .footer-contact-btn.alt {
+        color: #FFFFFF;
+
+        background:
+            rgba(255, 255, 255, 0.09);
+
+        border:
+            1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    /* =========================
+       BOTTOM
+    ========================= */
+
+    .footer-bottom {
+        margin-top: 55px;
+
+        padding-top: 22px;
+
+        border-top:
+            1px solid rgba(255, 255, 255, 0.11);
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        gap: 15px;
+
+        flex-wrap: wrap;
+
+        color:
+            rgba(255, 255, 255, 0.50);
+
+        font-size: 12px;
+    }
+
+    .footer-bottom-links {
+        display: flex;
+        align-items: center;
+
+        gap: 14px;
+
+        flex-wrap: wrap;
+    }
+
+    .footer-bottom-links a {
+        color:
+            rgba(255, 255, 255, 0.52);
+
+        text-decoration: none;
+    }
+
+    .footer-bottom-links a:hover {
+        color: #FFFFFF;
+    }
+
+    /* =========================
+       BACK TO TOP
+    ========================= */
+
+    .back-to-top {
+        position: fixed;
+
+        left: 23px;
+        bottom: 24px;
+
+        z-index: 970;
+
+        width: 47px;
+        height: 47px;
+
+        display: grid;
+        place-items: center;
+
+        border: none;
+
+        border-radius: 14px;
+
+        background: #0F3D3E;
+        color: #FFFFFF;
+
+        font-size: 21px;
+
+        cursor: pointer;
+
+        box-shadow:
+            0 12px 30px rgba(15, 61, 62, 0.22);
+
+        opacity: 0;
+        visibility: hidden;
+
+        transform: translateY(10px);
+
+        transition:
+            opacity 0.25s ease,
+            transform 0.25s ease,
+            visibility 0.25s ease;
+    }
+
+    .back-to-top.show {
+        opacity: 1;
+        visibility: visible;
+
+        transform: translateY(0);
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 950px) {
+        .footer-grid {
+            grid-template-columns:
+                1fr 1fr;
+        }
+    }
+
+    @media (max-width: 580px) {
+        .site-footer {
+            padding-top: 55px;
+        }
+
+        .footer-container {
+            width:
+                min(100% - 22px, 1200px);
+        }
+
+        .footer-grid {
+            grid-template-columns: 1fr;
+
+            gap: 35px;
+        }
+
+        .footer-bottom {
+            align-items: flex-start;
+            flex-direction: column;
+        }
+
+        .back-to-top {
+            left: 15px;
+            bottom: 18px;
+        }
+    }
+</style>
+
+<footer class="site-footer">
+
+    <div class="footer-container">
+
+        <div class="footer-grid">
+
+            <!-- Brand -->
+
+            <div class="footer-brand">
+
+                <div class="footer-logo">
+
+                    <div
+                        class="footer-logo-mark"
+                        aria-hidden="true"
+                    >
+                        <div class="footer-bars">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <strong>رصداد</strong>
+
+                        <small>RASDAD</small>
+                    </div>
+
+                </div>
+
+                <p>
+                    حلول رقمية ولوحات متابعة ذكية
+                    تساعد المدارس والجمعيات والمنشآت
+                    على تنظيم البيانات وتحويلها إلى
+                    مؤشرات واضحة تدعم اتخاذ القرار.
+                </p>
+
+                <div class="footer-slogan">
+                    نرصد البيانات لنصنع القرار
+                </div>
+
+            </div>
+
+            <!-- Quick links -->
+
+            <div class="footer-column">
+
+                <h3>روابط سريعة</h3>
+
+                <div class="footer-links">
+
+                    <a href="#home">
+                        الرئيسية
+                    </a>
+
+                    <a href="#solutions">
+                        من نحن
+                    </a>
+
+                    <a href="#portfolio">
+                        أعمالنا
+                    </a>
+
+                    <a href="#sectors">
+                        القطاعات
+                    </a>
+
+                    <a href="#pricing">
+                        الأسعار
+                    </a>
+
+                    <a href="https://wa.me/966563962821" target="_blank" rel="noopener">
+                        اتصل بنا
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- Services -->
+
+            <div class="footer-column">
+
+                <h3>خدماتنا</h3>
+
+                <div class="footer-links">
+
+                    <a href="#sectors">
+                        داشبوردات المدارس
+                    </a>
+
+                    <a href="#sectors">
+                        داشبوردات الجمعيات
+                    </a>
+
+                    <a href="#sectors">
+                        حلول المنشآت
+                    </a>
+
+                    <a href="services.html">
+                        التقارير والتحليلات
+                    </a>
+
+                    <a href="services.html">
+                        الأنظمة المخصصة
+                    </a>
+
+                    <a href="#project-request">
+                        داشبورد حسب الطلب
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- Contact -->
+
+            <div class="footer-column">
+
+                <h3>ابدأ مشروعك</h3>
+
+                <div class="footer-contact">
+
+                    <p>
+                        لديك فكرة أو عمل تريد تحويله
+                        إلى لوحة رقمية احترافية؟
+                        أرسل لنا احتياجك وسنساعدك
+                        في اختيار الحل المناسب.
+                    </p>
+
+                    <div class="footer-contact-actions">
+
+                        <a
+                            href="#project-request"
+                            class="footer-contact-btn"
+                        >
+                            اطلب مشروعك
+                        </a>
+
+                        <a
+                            href="https://wa.me/966563962821" target="_blank" rel="noopener"
+                            class="footer-contact-btn alt"
+                        >
+                            تواصل معنا
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <span>
+                ©
+                <span id="footerYear"></span>
+                RASDAD —
+                جميع الحقوق محفوظة
+            </span>
+
+            <div class="footer-bottom-links"><a href="https://snapchat.com/t/sEdifOUR" target="_blank" rel="noopener">سناب شات</a><a href="https://www.tiktok.com/@ghgh2821" target="_blank" rel="noopener">تيك توك</a><a href="https://wa.me/966563962821" dir="ltr">0563962821</a>
+
+                <a href="#faq">
+                    الأسئلة الشائعة
+                </a>
+
+                <a href="https://wa.me/966563962821" target="_blank" rel="noopener">
+                    الدعم والتواصل
+                </a>
+
+                <span>
+                    بيانات أوضح، قرارات أذكى
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+<button
+    type="button"
+    class="back-to-top"
+    id="backToTop"
+    aria-label="العودة إلى أعلى الصفحة"
+>
+    ↑
+</button>
+
+<script>
+(() => {
+    "use strict";
+
+    const year =
+        document.getElementById("footerYear");
+
+    const backToTop =
+        document.getElementById("backToTop");
+
+    if (year) {
+        year.textContent =
+            new Date().getFullYear();
+    }
+
+    if (!backToTop) {
+        return;
+    }
+
+    function toggleButton() {
+        backToTop.classList.toggle(
+            "show",
+            window.scrollY > 650
+        );
+    }
+
+    toggleButton();
+
+    window.addEventListener(
+        "scroll",
+        toggleButton,
+        {
+            passive: true
+        }
+    );
+
+    backToTop.addEventListener(
+        "click",
+        () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+    );
+})();
+</script>
