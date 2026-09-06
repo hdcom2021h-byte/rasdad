@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+<script src="media/components.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#0F3D3E">
@@ -2765,23 +2766,8 @@ async function loadComponent(
     }
 
     try {
-        const response =
-            await fetch(
-                filePath,
-                {
-                    cache: "no-cache"
-                }
-            );
-
-        if (!response.ok) {
-            throw new Error(
-                "Failed to load " +
-                filePath
-            );
-        }
-
-        const source =
-            await response.text();
+        const source = window.RASDAD_COMPONENTS[filePath];
+        if (!source) throw new Error("Missing component: " + filePath);
 
         const parser =
             new DOMParser();
@@ -2883,8 +2869,7 @@ async function loadComponent(
                 "
             >
                 تعذر تحميل جزء من الموقع.
-                شغّل المشروع عبر Live Server
-                أو خادم محلي.
+                يرجى تحديث الصفحة والمحاولة مرة أخرى.
             </div>
             `;
     }

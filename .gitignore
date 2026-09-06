@@ -1,4 +1,5 @@
 # Runtime data and customer information
+/_site/
 /data/
 *.db
 *.db-*

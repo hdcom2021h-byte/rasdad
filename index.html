@@ -6,6 +6,7 @@
 >
 
 <head>
+<script src="media/components.js"></script>
 
     <meta charset="UTF-8">
 
@@ -4388,7 +4389,7 @@ textarea.form-control {
                     type="submit"
                     class="btn btn-primary"
                 >
-                    إرسال الطلب
+                    متابعة الطلب عبر واتساب
                 </button>
 
                 <button
@@ -4773,7 +4774,7 @@ textarea.form-control {
                     class="btn btn-primary"
                     type="submit"
                 >
-                    إرسال الرسالة
+                    متابعة الرسالة عبر واتساب
                 </button>
 
             </div>
@@ -4833,23 +4834,8 @@ async function loadComponent(
     }
 
     try {
-        const response =
-            await fetch(
-                filePath,
-                {
-                    cache: "no-cache"
-                }
-            );
-
-        if (!response.ok) {
-            throw new Error(
-                "Failed to load " +
-                filePath
-            );
-        }
-
-        const source =
-            await response.text();
+        const source = window.RASDAD_COMPONENTS[filePath];
+        if (!source) throw new Error("Missing component: " + filePath);
 
         const parser =
             new DOMParser();
@@ -4939,8 +4925,7 @@ async function loadComponent(
                 "
             >
                 تعذر تحميل جزء من الموقع.
-                شغّل المشروع عبر Live Server
-                أو خادم محلي.
+                يرجى تحديث الصفحة والمحاولة مرة أخرى.
             </div>
             `;
     }
@@ -5221,17 +5206,12 @@ function showStatus(
    FORMS
 ========================================================= */
 
-async function saveLead(form, status, data) {
-    const button = form.querySelector('[type="submit"]');
-    button.disabled = true;
-    try {
-        const response = await fetch('/api/leads', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(data)});
-        if (!response.ok) throw new Error();
-        showStatus(status, 'تم استلام بياناتك بنجاح، وسنتواصل معك قريبًا.', 'success');
-        form.reset();
-    } catch {
-        showStatus(status, 'تعذر حفظ البيانات. حاول مجددًا أو تواصل عبر واتساب 0563962821.', 'error');
-    } finally { button.disabled = false; }
+function saveLead(form, status, data) {
+    const labels = {name:'الاسم', phone:'الجوال', email:'البريد', entity:'الجهة', type:'نوع المشروع', date:'الموعد', description:'وصف الطلب', features:'الخصائص', message:'الرسالة'};
+    const lines = [data.kind === 'request' ? 'طلب مشروع من موقع رصداد' : 'استفسار من موقع رصداد'];
+    for (const [key, label] of Object.entries(labels)) if (data[key]) lines.push(label + ': ' + data[key]);
+    window.open('https://wa.me/966563962821?text=' + encodeURIComponent(lines.join('\n')), '_blank', 'noopener,noreferrer');
+    showStatus(status, 'أكمل إرسال الرسالة في واتساب. لا يُرسل النموذج تلقائيًا.', 'success');
 }
 
 function initForms() {
